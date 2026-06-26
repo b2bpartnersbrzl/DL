@@ -336,7 +336,7 @@ body.menu-scroll-lock {
 
 #servicos .services-cta-text {
     margin: 0 0 18px;
-    color: rgba(255, 255, 255, 0.68);
+    color: rgba(255, 255, 255, 0.86);
     font-size: 0.98rem;
     font-weight: 400;
     line-height: 1.65;
@@ -1206,6 +1206,7 @@ body.menu-scroll-lock {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    text-align: center;
 }
 
 .gestao-bpx-loading {
@@ -1216,6 +1217,46 @@ body.menu-scroll-lock {
     filter: drop-shadow(0 22px 34px rgba(6, 105, 56, 0.16));
 }
 
+.gestao-bpx-temp h2 {
+    margin: 18px 0 4px;
+    color: #29285b;
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.gestao-bpx-temp p {
+    max-width: 560px;
+    margin: 0;
+    color: #5c6b80;
+    font-size: clamp(1rem, 1.35vw, 1.16rem);
+    line-height: 1.62;
+}
+
+.gestao-bpx-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    margin-top: 18px;
+    padding: 13px 24px;
+    border: 1px solid rgba(41, 40, 91, 0.26);
+    border-radius: 6px;
+    background-color: transparent;
+    color: #29285b;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.gestao-bpx-link:hover,
+.gestao-bpx-link:focus {
+    background-color: #29285b;
+    color: #ffffff;
+    outline: none;
+}
 
 .gestao-bpx-status {
     margin: 0;
@@ -1253,6 +1294,16 @@ body.menu-scroll-lock {
     font-size: 17px;
     line-height: 1.6;
     color: #5c6b80;
+}
+
+.section-especialistas {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at 24% 30%, rgba(45, 106, 79, 0.12), transparent 28rem),
+        linear-gradient(145deg, #ffffff 0%, #f4f7f6 58%, #eef3f1 100%);
 }
 
 /* ==========================================================================
@@ -1521,35 +1572,33 @@ body.menu-scroll-lock {
 }
 
 /* ==========================================================================
-   BARRA DISCRETA DE DIREITOS AUTORAIS
+   RODAPÉ DISCRETO DE DIREITOS AUTORAIS
    ========================================================================== */
 .copyright-bar {
     position: fixed;
+    left: 0;
     right: 0;
-    bottom: 24px;
+    bottom: 0;
     z-index: 900;
-    width: fit-content;
-    max-width: calc(100% - 32px);
-    padding: 8px 18px 8px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-right: 0;
-    border-radius: 999px 0 0 999px;
-    background-color: rgba(26, 26, 46, 0.34);
-    backdrop-filter: blur(10px);
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.74rem;
-    font-weight: 600;
-    line-height: 1;
+    width: 100%;
+    padding: 6px 24px;
+    border: 0;
+    border-radius: 0;
+    background-color: rgba(26, 26, 46, 0.14);
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 1.25;
     letter-spacing: 0.01em;
+    text-align: right;
     pointer-events: none;
 }
 
 @media (max-width: 768px) {
     .copyright-bar {
-        bottom: 16px;
-        max-width: calc(100% - 24px);
-        padding: 7px 14px 7px 16px;
-        font-size: 0.68rem;
+        padding: 6px 16px;
+        font-size: 0.64rem;
+        text-align: center;
     }
 }
 /* Ajustes temporarios de performance e consistencia tipografica no mobile */
@@ -1567,8 +1616,7 @@ body.menu-scroll-lock {
     }
 
     .header-principal,
-    .menu-navegacao,
-    .copyright-bar {
+    .menu-navegacao {
         backdrop-filter: none;
     }
 
@@ -1927,7 +1975,7 @@ body.menu-scroll-lock {
     }
 
     #servicos .services-cta-text {
-        color: #a0aabf;
+        color: rgba(255, 255, 255, 0.78);
         font-size: 0.9rem;
         line-height: 1.5;
         text-shadow: none;
@@ -2230,14 +2278,13 @@ body.menu-scroll-lock {
 
     #servicos,
     #metodo {
-        content-visibility: auto;
-        contain-intrinsic-size: 900px;
-        scroll-margin-top: 90px;
+        content-visibility: visible;
+        scroll-margin-top: 102px;
     }
 
     #contato {
         content-visibility: visible;
-        scroll-margin-top: 90px;
+        scroll-margin-top: 102px;
     }
 
     .slider-container,
@@ -2374,6 +2421,7 @@ body.menu-scroll-lock {
 
     #servicos .services-cta-mobile {
         margin-top: 18px;
+        margin-bottom: 18px;
     }
 }
 
@@ -2413,4 +2461,618 @@ body.menu-scroll-lock {
     #servicos .service-item:last-child {
         border-bottom: 0;
     }
+}
+
+/* Mobile: evita que Servicos e Metodo entrem sob o header fixo */
+@media (max-width: 768px) {
+    html {
+        scroll-padding-top: 102px;
+    }
+
+    #servicos,
+    #metodo {
+        scroll-margin-top: 102px;
+        overflow: visible;
+    }
+
+    #servicos .services-shell {
+        padding-top: max(112px, calc(90px + env(safe-area-inset-top) + 22px));
+    }
+
+    .container-metodo {
+        padding-top: max(122px, calc(90px + env(safe-area-inset-top) + 32px));
+    }
+}
+
+/* Mobile: zona segura global abaixo do header fixo */
+@media (max-width: 768px) {
+    :root {
+        --mobile-header-safe: calc(90px + env(safe-area-inset-top) + 24px);
+        --mobile-anchor-safe: calc(90px + env(safe-area-inset-top) + 18px);
+    }
+
+    html {
+        scroll-padding-top: var(--mobile-anchor-safe);
+    }
+
+    .wrapper-horizontal > section {
+        scroll-margin-top: var(--mobile-anchor-safe);
+    }
+
+    .section-full:not(.section-hero) {
+        justify-content: flex-start;
+    }
+
+    #servicos .services-shell,
+    .gestao-bpx-temp,
+    .container-metodo,
+    .contato-shell {
+        padding-top: max(var(--mobile-header-safe), 114px);
+    }
+
+    .section-placeholder {
+        padding-top: max(var(--mobile-header-safe), 114px);
+    }
+
+    .section-especialistas {
+        align-items: flex-start;
+    }
+
+    .conteudo-hero {
+        padding-top: max(90px, calc(90px + env(safe-area-inset-top)));
+    }
+}
+
+/* Tablet/mobile: nenhuma headline deve ficar sob o header */
+@media (max-width: 1100px) {
+    :root {
+        --header-safe-space: calc(90px + env(safe-area-inset-top));
+        --section-safe-start: calc(var(--header-safe-space) + 24px);
+    }
+
+    html {
+        scroll-padding-top: var(--section-safe-start);
+    }
+
+    .wrapper-horizontal > section:not(.section-hero) {
+        align-items: flex-start;
+        justify-content: flex-start;
+        scroll-margin-top: var(--section-safe-start);
+    }
+
+    #servicos .services-shell,
+    .gestao-bpx-temp,
+    .container-metodo,
+    .section-placeholder,
+    .contato-shell {
+        padding-top: max(var(--section-safe-start), 114px);
+    }
+
+    .metodo-conteudo {
+        padding-top: 0;
+    }
+}
+
+/* Regra estrutural: conteudo nunca nasce atras do header fixo */
+:root {
+    --fixed-header-height: 90px;
+    --headline-safe-gap: 24px;
+    --headline-safe-top: calc(var(--fixed-header-height) + var(--headline-safe-gap));
+}
+
+.wrapper-horizontal > section:not(.section-hero) {
+    align-items: flex-start;
+    scroll-margin-top: var(--headline-safe-top);
+}
+
+#servicos .services-shell {
+    padding-top: max(140px, var(--headline-safe-top));
+}
+
+.gestao-bpx-temp {
+    padding-top: var(--headline-safe-top);
+}
+
+.container-metodo {
+    padding-top: var(--headline-safe-top);
+    padding-bottom: 56px;
+    align-items: center;
+}
+
+.metodo-conteudo {
+    padding-top: 0;
+}
+
+.section-placeholder {
+    align-items: flex-start;
+    padding-top: var(--headline-safe-top);
+}
+
+.contato-shell {
+    padding-top: max(160px, var(--headline-safe-top));
+}
+
+@media (max-width: 768px) {
+    :root {
+        --headline-safe-gap: calc(24px + env(safe-area-inset-top));
+    }
+
+    #servicos .services-shell,
+    .gestao-bpx-temp,
+    .container-metodo,
+    .section-placeholder,
+    .contato-shell {
+        padding-top: var(--headline-safe-top);
+    }
+}
+
+/* Servicos: respiro inferior real da secao */
+#servicos .services-shell {
+    padding-bottom: 0;
+}
+
+@media (max-width: 1100px) {
+    #servicos .services-shell {
+        padding-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #servicos .services-shell {
+        padding-bottom: 0;
+    }
+}
+
+/* Servicos: spacer real para o scroll nao engolir o respiro */
+@media (max-width: 1100px) {
+    #servicos .services-shell {
+        min-height: auto;
+    }
+
+    #servicos .services-shell::after {
+        display: none;
+        content: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #servicos .services-shell::after {
+        display: none;
+        content: none;
+    }
+}
+
+/* Servicos desktop: respiro real abaixo do CTA antes do rodape fixo */
+#servicos {
+    --services-scroll-spacer: 96px;
+}
+
+#servicos .services-shell::after {
+    display: none;
+    content: none;
+    pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+    #servicos {
+        --services-scroll-spacer: 96px;
+    }
+}
+
+@media (max-width: 768px) {
+    #servicos {
+        --services-scroll-spacer: 84px;
+    }
+}
+
+@media (min-width: 1101px) {
+    #servicos .services-shell {
+        align-items: start;
+    }
+
+    #servicos .services-cta {
+        margin-top: clamp(52px, 9.2vh, 76px);
+    }
+
+    #servicos .services-list {
+        align-self: start;
+        padding-top: 12px;
+    }
+}
+
+
+/* Ajuste pontual: Serviços desktop - CTA mais alto, texto semi-bold e item ativo único */
+@media (min-width: 1101px) {
+    #servicos .services-cta {
+        margin-top: clamp(39px, 6.9vh, 57px);
+    }
+
+    #servicos .services-cta-text {
+        font-weight: 600;
+    }
+
+    #servicos .service-item:not(.active),
+    #servicos .service-item:not(.active):hover,
+    #servicos .service-item:not(.active):focus {
+        opacity: 0.42;
+        transform: none;
+    }
+
+    #servicos .service-item:not(.active) h3,
+    #servicos .service-item:not(.active):hover h3,
+    #servicos .service-item:not(.active):focus h3 {
+        transform: none;
+    }
+
+    #servicos .service-item:not(.active) p,
+    #servicos .service-item:not(.active):hover p,
+    #servicos .service-item:not(.active):focus p {
+        margin-top: 0;
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    #servicos .service-item.active {
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   MÉTODO: FUNDO EM IMAGEM, LISTA À DIREITA E CTA EDITORIAL
+   ========================================================================== */
+.section-metodo {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    align-items: stretch;
+    justify-content: center;
+    background: radial-gradient(circle, #2a3a56 0%, #1a1a2e 65%);
+    background-size: 250% 250%;
+    animation: deslocamentoEsferico 10s ease-in-out infinite alternate;
+    color: #ffffff;
+}
+
+.section-metodo .metodo-bg-layer,
+.section-metodo .metodo-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.section-metodo .metodo-bg-layer {
+    z-index: 1;
+    overflow: hidden;
+    background: radial-gradient(circle, #2a3a56 0%, #1a1a2e 65%);
+}
+
+.section-metodo .img-metodo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.035);
+    filter: brightness(1.06) contrast(1.03) saturate(1.04);
+    transition: opacity 0.75s ease, transform 1.25s ease, filter 0.75s ease, visibility 0.75s ease;
+}
+
+.section-metodo .img-metodo.ativo {
+    opacity: 0.86;
+    visibility: visible;
+    transform: scale(1);
+}
+
+.section-metodo .metodo-overlay {
+    z-index: 2;
+    background:
+        linear-gradient(90deg, rgba(26, 26, 46, 0.78) 0%, rgba(42, 58, 86, 0.58) 43%, rgba(26, 26, 46, 0.72) 100%),
+        linear-gradient(180deg, rgba(26, 26, 46, 0.16) 0%, rgba(26, 26, 46, 0.44) 100%);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.section-metodo .metodo-overlay::before {
+    content: '';
+    position: absolute;
+    inset: -35%;
+    background:
+        radial-gradient(circle at 22% 28%, rgba(83, 111, 156, 0.42), transparent 34%),
+        radial-gradient(circle at 78% 58%, rgba(45, 106, 79, 0.18), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(42, 58, 86, 0.34), transparent 42%);
+    background-size: 250% 250%;
+    animation: deslocamentoEsferico 10s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+    opacity: 0.78;
+}
+
+.section-metodo .metodo-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(26, 26, 46, 0.18) 58%, rgba(26, 26, 46, 0.42) 100%);
+}
+
+.section-metodo .container-metodo {
+    position: relative;
+    z-index: 3;
+    width: min(1240px, calc(100% - 64px));
+    max-width: none;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: max(140px, var(--headline-safe-top)) 0 64px;
+    display: grid;
+    grid-template-columns: minmax(280px, 0.85fr) minmax(420px, 1fr);
+    gap: clamp(36px, 6vw, 92px);
+    align-items: start;
+}
+
+.section-metodo .metodo-conteudo {
+    width: 100%;
+    max-width: 480px;
+    padding: 12px 0 0;
+    align-self: start;
+}
+
+.section-metodo .metodo-conteudo h2 {
+    margin: 0 0 22px;
+    color: #ffffff;
+    font-size: clamp(3rem, 5.2vw, 5.8rem);
+    line-height: 0.92;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    text-shadow: 0 12px 42px rgba(0, 0, 0, 0.34);
+}
+
+.section-metodo .subtitulo-metodo {
+    margin: 0;
+    max-width: 420px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: clamp(1rem, 1.15vw, 1.15rem);
+    line-height: 1.75;
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+}
+
+.section-metodo .metodo-cta {
+    margin-top: clamp(48px, 8vh, 76px);
+    max-width: 440px;
+}
+
+.section-metodo .metodo-cta-separator {
+    width: 100%;
+    max-width: 440px;
+    height: 1px;
+    margin: 0 0 24px;
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+.section-metodo .metodo-cta-text {
+    margin: 0 0 18px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.98rem;
+    font-weight: 600;
+    line-height: 1.65;
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.28);
+}
+
+.section-metodo .metodo-cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 13px 26px;
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    border-radius: 6px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    font-size: 0.94rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.section-metodo .metodo-cta-button:hover,
+.section-metodo .metodo-cta-button:focus {
+    background-color: rgba(255, 255, 255, 0.92);
+    border-color: rgba(255, 255, 255, 0.92);
+    color: #1a1a2e;
+    outline: none;
+}
+
+.section-metodo .lista-metodo {
+    width: 100%;
+    max-width: 700px;
+    padding-top: 12px;
+    align-self: start;
+}
+
+.section-metodo .item-metodo {
+    opacity: 0.42;
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.32);
+}
+
+.section-metodo .item-metodo.ativo {
+    opacity: 1;
+}
+
+.section-metodo .item-metodo.passado {
+    opacity: 0.72;
+}
+
+.section-metodo .metodo-numero {
+    border-color: rgba(255, 255, 255, 0.46);
+    color: rgba(255, 255, 255, 0.82);
+    background-color: rgba(26, 26, 46, 0.10);
+}
+
+.section-metodo .metodo-texto h3 {
+    color: #ffffff;
+    font-size: clamp(1.18rem, 1.45vw, 1.55rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+}
+
+.section-metodo .metodo-texto p {
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+.section-metodo .item-metodo:not(:last-child)::before {
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+
+
+@media (min-width: 1101px) {
+    .section-metodo .lista-metodo {
+        gap: 30px;
+    }
+
+    .section-metodo .item-metodo:not(:last-child)::before,
+    .section-metodo .item-metodo:not(:last-child)::after {
+        bottom: -30px;
+    }
+}
+
+
+@media (max-width: 1100px) {
+    .section-metodo .container-metodo {
+        width: min(100% - 36px, 760px);
+        min-height: 100vh;
+        padding: max(var(--headline-safe-top), 122px) 0 48px;
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+
+    .section-metodo .metodo-conteudo {
+        max-width: 620px;
+        padding-top: 0;
+    }
+
+    .section-metodo .subtitulo-metodo {
+        max-width: 560px;
+    }
+
+    .section-metodo .metodo-cta {
+        margin-top: 34px;
+        max-width: 520px;
+    }
+
+    .section-metodo .lista-metodo {
+        max-width: 620px;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-metodo .img-metodo.ativo {
+        opacity: 0.80;
+    }
+
+    .section-metodo .metodo-overlay {
+        background:
+            linear-gradient(90deg, rgba(26, 26, 46, 0.82) 0%, rgba(42, 58, 86, 0.66) 100%),
+            linear-gradient(180deg, rgba(26, 26, 46, 0.18) 0%, rgba(26, 26, 46, 0.54) 100%);
+    }
+
+    .section-metodo .metodo-conteudo h2 {
+        font-size: 2.8rem;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+    }
+
+    .section-metodo .subtitulo-metodo {
+        font-size: 0.98rem;
+        line-height: 1.65;
+    }
+
+    .section-metodo .metodo-cta {
+        margin-top: 30px;
+    }
+
+    .section-metodo .metodo-cta-separator {
+        margin-bottom: 18px;
+        background-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .section-metodo .metodo-cta-text {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        text-shadow: none;
+    }
+
+    .section-metodo .metodo-cta-button {
+        min-height: 48px;
+        padding: 14px 30px;
+        font-size: 0.95rem;
+    }
+
+    .section-metodo .lista-metodo {
+        gap: 18px;
+    }
+
+    .section-metodo .item-metodo {
+        gap: 18px;
+    }
+
+    .section-metodo .metodo-texto h3 {
+        font-size: 1.12rem;
+        line-height: 1.22;
+        letter-spacing: 0;
+    }
+
+    .section-metodo .metodo-texto p {
+        font-size: 0.9rem;
+        line-height: 1.45;
+    }
+}
+
+
+/* ==========================================================================
+   AJUSTE: GRADIENTE VERDE NO MÉTODO E HEADLINE SERVIÇOS
+   ========================================================================== */
+#servicos .services-intro h2 {
+    font-weight: 800;
+}
+
+.section-metodo .item-metodo:nth-child(1) {
+    --metodo-step-color: rgba(45, 106, 79, 0.30);
+    --metodo-next-color: rgba(45, 106, 79, 0.46);
+}
+
+.section-metodo .item-metodo:nth-child(2) {
+    --metodo-step-color: rgba(45, 106, 79, 0.46);
+    --metodo-next-color: rgba(45, 106, 79, 0.62);
+}
+
+.section-metodo .item-metodo:nth-child(3) {
+    --metodo-step-color: rgba(45, 106, 79, 0.62);
+    --metodo-next-color: rgba(45, 106, 79, 0.80);
+}
+
+.section-metodo .item-metodo:nth-child(4) {
+    --metodo-step-color: rgba(45, 106, 79, 0.80);
+    --metodo-next-color: rgba(45, 106, 79, 1);
+}
+
+.section-metodo .item-metodo:nth-child(5) {
+    --metodo-step-color: rgba(45, 106, 79, 1);
+    --metodo-next-color: rgba(45, 106, 79, 1);
+}
+
+.section-metodo .item-metodo.ativo .metodo-numero,
+.section-metodo .item-metodo.passado .metodo-numero {
+    background-color: var(--metodo-step-color);
+    border-color: var(--metodo-step-color);
+    color: #ffffff;
+}
+
+.section-metodo .item-metodo:not(:last-child)::after {
+    background: linear-gradient(180deg, var(--metodo-step-color) 0%, var(--metodo-next-color) 100%);
 }
