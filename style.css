@@ -6345,3 +6345,76 @@ body.menu-scroll-lock {
         animation-play-state: paused !important;
     }
 }
+
+/* Hero: protecao de leitura concentrada na esquerda, imagem livre a direita. */
+.section-hero .slider-container::after {
+    background: linear-gradient(90deg,
+        rgba(8, 13, 24, 0.62) 0%,
+        rgba(8, 13, 24, 0.48) 28%,
+        rgba(8, 13, 24, 0.22) 48%,
+        rgba(8, 13, 24, 0) 74%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -webkit-mask-image: linear-gradient(90deg,
+        #000 0%,
+        #000 28%,
+        rgba(0, 0, 0, 0.6) 52%,
+        transparent 76%);
+    mask-image: linear-gradient(90deg,
+        #000 0%,
+        #000 28%,
+        rgba(0, 0, 0, 0.6) 52%,
+        transparent 76%);
+}
+
+.section-hero .slide {
+    filter: brightness(1.07) contrast(1.02) saturate(1.04);
+}
+
+@media (max-width: 768px) {
+    .section-hero .slider-container::after {
+        background: linear-gradient(90deg,
+            rgba(8, 13, 24, 0.58) 0%,
+            rgba(8, 13, 24, 0.40) 42%,
+            rgba(8, 13, 24, 0.12) 64%,
+            rgba(8, 13, 24, 0) 88%);
+        -webkit-backdrop-filter: blur(7px);
+        backdrop-filter: blur(7px);
+        -webkit-mask-image: linear-gradient(90deg,
+            #000 0%,
+            #000 38%,
+            rgba(0, 0, 0, 0.46) 64%,
+            transparent 90%);
+        mask-image: linear-gradient(90deg,
+            #000 0%,
+            #000 38%,
+            rgba(0, 0, 0, 0.46) 64%,
+            transparent 90%);
+    }
+
+    .section-hero .slide {
+        filter: brightness(1.04) contrast(1.02) saturate(1.03);
+    }
+}
+/* Hero: luz preservada, sem desfoque sobre a imagem. */
+.section-hero .slider-container::after {
+    background: linear-gradient(90deg,
+        rgba(8, 13, 24, 0.44) 0%,
+        rgba(8, 13, 24, 0.30) 28%,
+        rgba(8, 13, 24, 0.12) 48%,
+        rgba(8, 13, 24, 0) 74%);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+@media (max-width: 768px) {
+    .section-hero .slider-container::after {
+        background: linear-gradient(90deg,
+            rgba(8, 13, 24, 0.42) 0%,
+            rgba(8, 13, 24, 0.28) 42%,
+            rgba(8, 13, 24, 0.08) 64%,
+            rgba(8, 13, 24, 0) 88%);
+    }
+}
