@@ -376,11 +376,13 @@ body.menu-scroll-lock {
 }
 
 #servicos .service-item {
+    position: relative;
     padding: 20px 0 22px;
     border-top: 1px solid rgba(255, 255, 255, 0.20);
     opacity: 0.48;
     cursor: pointer;
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    overflow: visible;
+    transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.45s ease;
     outline: none;
 }
 
@@ -798,10 +800,10 @@ body.menu-scroll-lock {
 
 .contato-copy h2 {
     margin: 0;
-    max-width: 620px;
+    max-width: 720px;
     color: #ffffff;
     font-family: Arial, sans-serif;
-    font-size: clamp(3rem, 3.8vw, 4rem);
+    font-size: clamp(3rem, 5.2vw, 5.8rem);
     line-height: 0.92;
     font-weight: 800;
     letter-spacing: -0.06em;
@@ -1083,8 +1085,8 @@ body.menu-scroll-lock {
     }
 
     .contato-copy h2 {
-        font-size: clamp(3rem, 4.2vw, 3.6rem);
-        line-height: 0.94;
+        font-size: clamp(3rem, 5.2vw, 5.2rem);
+        line-height: 0.92;
         font-weight: 800;
         letter-spacing: -0.06em;
     }
@@ -1155,10 +1157,10 @@ body.menu-scroll-lock {
 
     .contato-copy h2 {
         max-width: 100%;
-        font-size: clamp(3rem, 8vw, 3.4rem);
-        line-height: 0.96;
+        font-size: clamp(2.45rem, 10.5vw, 3rem);
+        line-height: 0.98;
         font-weight: 800;
-        letter-spacing: -0.06em;
+        letter-spacing: -0.03em;
     }
 
     .contato-ctas {
@@ -1184,88 +1186,264 @@ body.menu-scroll-lock {
     }
 }
 
-/* ==========================================================================
-   SEÇÃO GESTÃO BPx TEMPORÁRIA
+/* ========================================================================== 
+   SEÇÃO GESTÃO BPx
    ========================================================================== */
-.section-gestao-bpx-temp {
+.section-gestao-bpx {
+    --bpx-panel-x: 0px;
+    --bpx-panel-y: 0px;
+    --bpx-rotate-x: 1deg;
+    --bpx-rotate-y: -8deg;
+    --bpx-shadow-y: 46px;
     position: relative;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 50% 42%, rgba(6, 105, 56, 0.10), transparent 32rem),
-        linear-gradient(145deg, #ffffff 0%, #f6f8f7 58%, #edf3f0 100%);
-    color: #29285b;
-}
-
-.gestao-bpx-temp {
-    width: min(720px, calc(100% - 48px));
     min-height: 100vh;
-    margin: 0 auto;
-    padding: 90px 24px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+    justify-content: flex-start;
+    align-items: stretch;
+    background-color: #071428;
+    background-image: url('images/dash_bg_section.webp');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% auto;
+    color: #ffffff;
 }
 
-.gestao-bpx-loading {
-    display: block;
-    width: clamp(61px, 10.1vw, 99px);
-    height: auto;
-    aspect-ratio: 148.97 / 178.7;
-    filter: drop-shadow(0 22px 34px rgba(6, 105, 56, 0.16));
+.gestao-bpx-bg {
+    display: none;
 }
 
-.gestao-bpx-temp h2 {
-    margin: 18px 0 4px;
-    color: #29285b;
-    font-size: clamp(2.4rem, 6vw, 5rem);
-    line-height: 0.95;
-    font-weight: 800;
-    letter-spacing: -0.04em;
+.section-gestao-bpx::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(7, 20, 40, 0.82) 0%, rgba(7, 20, 40, 0.58) 34%, rgba(7, 20, 40, 0.20) 68%, rgba(7, 20, 40, 0.34) 100%),
+        linear-gradient(180deg, rgba(7, 20, 40, 0.24) 0%, rgba(7, 20, 40, 0.06) 42%, rgba(7, 20, 40, 0.32) 100%);
 }
 
-.gestao-bpx-temp p {
-    max-width: 560px;
+.section-gestao-bpx::after,
+.gestao-bpx-bg::before,
+.gestao-bpx-bg::after,
+.gestao-bpx-visual::before,
+.gestao-bpx-visual::after {
+    content: none;
+}
+
+.gestao-bpx-content {
+    position: relative;
+    z-index: 3;
+    align-self: flex-start;
+    width: min(520px, calc(100% - 48px));
+    margin-left: clamp(24px, 7vw, 108px);
+    padding-top: clamp(168px, 28vh, 238px);
+}
+
+.gestao-bpx-eyebrow {
+    display: none;
+}
+
+.gestao-bpx-content h2 {
     margin: 0;
-    color: #5c6b80;
-    font-size: clamp(1rem, 1.35vw, 1.16rem);
-    line-height: 1.62;
+    max-width: none;
+    font-size: clamp(2.75rem, 4.65vw, 5.15rem);
+    font-weight: 800;
+    line-height: 0.90;
+    letter-spacing: -0.06em;
 }
 
-.gestao-bpx-link {
+.gestao-bpx-content h2 span {
+    display: block;
+    white-space: nowrap;
+}
+
+.gestao-bpx-content > p:not(.gestao-bpx-eyebrow) {
+    margin: 26px 0 0;
+    max-width: 520px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(16px, 1.35vw, 19px);
+    line-height: 1.68;
+}
+
+.gestao-bpx-signature {
+    margin-top: 14px;
+}
+
+.gestao-bpx-signature strong {
+    font-weight: 650;
+}
+
+.gestao-bpx-signature strong em {
+    font-weight: 800;
+}
+
+.gestao-bpx-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 46px;
-    margin-top: 18px;
-    padding: 13px 24px;
-    border: 1px solid rgba(41, 40, 91, 0.26);
-    border-radius: 6px;
-    background-color: transparent;
-    color: #29285b;
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-.gestao-bpx-link:hover,
-.gestao-bpx-link:focus {
-    background-color: #29285b;
+    min-height: 48px;
+    margin-top: 34px;
+    padding: 0 24px;
+    border: 1px solid rgba(255, 255, 255, 0.64);
+    border-radius: 4px;
+    background: rgba(7, 20, 40, 0.88);
     color: #ffffff;
-    outline: none;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.30);
+    backdrop-filter: blur(4px);
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.gestao-bpx-status {
-    margin: 0;
-    color: #64706a;
-    font-size: 14px;
-    font-weight: 650;
-    line-height: 1.4;
-    text-align: center;
+.gestao-bpx-cta:hover,
+.gestao-bpx-cta:focus-visible {
+    background: rgba(7, 20, 40, 0.96);
+    border-color: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.36);
+    transform: translateY(-2px);
 }
+
+.gestao-bpx-visual {
+    position: absolute;
+    right: clamp(70px, 8vw, 130px);
+    top: 50%;
+    z-index: 2;
+    width: min(40.25vw, 635px);
+    transform: translate3d(var(--bpx-panel-x), calc(-40% + var(--bpx-panel-y)), 0) perspective(1400px) rotateY(var(--bpx-rotate-y)) rotateX(var(--bpx-rotate-x));
+    transform-style: preserve-3d;
+    transition: transform 0.04s linear;
+    will-change: transform;
+    pointer-events: auto;
+}
+
+.gestao-bpx-dashboard {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    opacity: 0.98;
+    filter: drop-shadow(-34px var(--bpx-shadow-y) 48px rgba(0, 0, 0, 0.32));
+    transition: filter 0.04s linear;
+    will-change: filter;
+}
+
+.wrapper-horizontal > #gestao-bpx.section-gestao-bpx.active {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    height: auto;
+    min-height: 100vh;
+}
+
+.wrapper-horizontal > #gestao-bpx.section-gestao-bpx.active .gestao-bpx-visual {
+    animation: bpxDashboardEntrada 0.85s cubic-bezier(0.18, 0.84, 0.22, 1) both;
+}
+
+@keyframes bpxDashboardEntrada {
+    0% { opacity: 0; transform: translate3d(var(--bpx-panel-x), calc(-40% + var(--bpx-panel-y) + 58px), 0) perspective(1400px) rotateY(var(--bpx-rotate-y)) rotateX(8deg); }
+    100% { opacity: 1; transform: translate3d(var(--bpx-panel-x), calc(-40% + var(--bpx-panel-y)), 0) perspective(1400px) rotateY(var(--bpx-rotate-y)) rotateX(var(--bpx-rotate-x)); }
+}
+
+@media (max-width: 1120px) {
+    .gestao-bpx-content {
+        width: min(500px, calc(100% - 48px));
+        margin-left: clamp(24px, 5vw, 72px);
+    }
+
+    .gestao-bpx-visual {
+        right: 16px;
+        width: min(43vw, 538px);
+        opacity: 0.96;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-gestao-bpx {
+        min-height: 100svh;
+        padding: 110px 0 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .gestao-bpx-content {
+        width: min(100% - 42px, 520px);
+        margin: 0 auto;
+        padding-top: 0;
+    }
+
+    .gestao-bpx-content h2 {
+        max-width: none;
+        font-size: clamp(40px, 12vw, 58px);
+        line-height: 0.92;
+        letter-spacing: -0.06em;
+    }
+
+    .gestao-bpx-content h2 span {
+        white-space: normal;
+    }
+
+    .gestao-bpx-content > p:not(.gestao-bpx-eyebrow) {
+        max-width: 440px;
+        margin-top: 22px;
+        font-size: 16px;
+        line-height: 1.58;
+    }
+
+    .gestao-bpx-cta {
+        display: none;
+    }
+
+    .gestao-bpx-visual {
+        position: relative;
+        right: auto;
+        top: auto;
+        order: 2;
+        width: min(86vw, 469px);
+        margin: 36px auto -12px;
+        transform: none;
+        transition: none;
+    }
+
+    .wrapper-horizontal > #gestao-bpx.section-gestao-bpx.active .gestao-bpx-visual {
+        animation: none;
+    }
+
+    .gestao-bpx-dashboard {
+        filter: drop-shadow(-20px 26px 34px rgba(0, 0, 0, 0.38));
+    }
+}
+
+@media (max-width: 480px) {
+    .gestao-bpx-content {
+        width: min(100% - 32px, 440px);
+    }
+
+    .gestao-bpx-content h2 {
+        font-size: clamp(36px, 11vw, 48px);
+    }
+
+    .gestao-bpx-cta {
+        width: 100%;
+        padding: 0 18px;
+    }
+
+    .gestao-bpx-visual {
+        width: 86vw;
+        margin-right: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gestao-bpx-visual,
+    .gestao-bpx-dashboard {
+        transition: none;
+    }
+}
+
 
 /* ==========================================================================
    SEÇÕES TEMPORÁRIAS DE APOIO AO MENU
@@ -1297,13 +1475,84 @@ body.menu-scroll-lock {
 }
 
 .section-especialistas {
+    position: relative;
     min-height: 100vh;
+    display: grid;
+    place-content: center;
+    place-items: center;
+    padding: calc(var(--fixed-header-height, 90px) + 18px) clamp(20px, 5vw, 72px) 30px;
+    overflow: hidden;
+    background: radial-gradient(circle, #2a3a56 0%, #1a1a2e 65%);
+    background-size: 250% 250%;
+    background-position: 50% 50%;
+}
+
+.wrapper-horizontal > #especialistas.section-especialistas.active {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.section-especialistas::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 22% 28%, rgba(83, 111, 156, 0.34), transparent 34%),
+        radial-gradient(circle at 78% 58%, rgba(45, 106, 79, 0.16), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(42, 58, 86, 0.28), transparent 42%);
+    background-size: 250% 250%;
+    background-position: 50% 50%;
+    opacity: 0.72;
+}
+
+.section-especialistas::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(26, 26, 46, 0.18) 58%, rgba(26, 26, 46, 0.42) 100%);
+}
+
+.especialistas-visual {
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: min(78vw, 760px);
+    height: min(calc(100vh - var(--fixed-header-height, 90px) - 54px), 860px);
+    pointer-events: none;
+}
+
+.especialistas-visual::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: 4% -18% 2%;
     background:
-        radial-gradient(circle at 24% 30%, rgba(45, 106, 79, 0.12), transparent 28rem),
-        linear-gradient(145deg, #ffffff 0%, #f4f7f6 58%, #eef3f1 100%);
+        radial-gradient(ellipse at 50% 42%, rgba(255, 255, 255, 0.34) 0%, rgba(168, 190, 226, 0.24) 24%, rgba(83, 111, 156, 0.16) 44%, transparent 72%),
+        radial-gradient(ellipse at 50% 72%, rgba(255, 255, 255, 0.18) 0%, rgba(45, 106, 79, 0.13) 36%, transparent 68%);
+    filter: blur(10px);
+    opacity: 0.94;
+}
+
+.especialistas-visual img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter:
+        drop-shadow(0 28px 54px rgba(0, 0, 0, 0.36))
+        drop-shadow(0 0 34px rgba(255, 255, 255, 0.16));
 }
 
 /* ==========================================================================
@@ -1371,6 +1620,293 @@ body.menu-scroll-lock {
     .wrapper-horizontal > #contato.section-contato.active.form-open {
         overflow-x: hidden;
         overflow-y: auto;
+    }
+}
+
+/* ==========================================================================
+   REFINO DE RITMO E ALINHAMENTO — ESPECIALISTAS DL
+   ========================================================================== */
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-media-shift: clamp(-116px, -5.6vw, -74px);
+        --especialistas-ease: cubic-bezier(0.2, 0.74, 0.22, 1);
+    }
+
+    .section-especialistas .especialistas-copy {
+        transition:
+            left 0.82s var(--especialistas-ease),
+            top 0.82s var(--especialistas-ease),
+            width 0.82s var(--especialistas-ease),
+            transform 0.82s var(--especialistas-ease),
+            opacity 0.58s ease;
+    }
+
+    .section-especialistas .especialistas-copy h2 {
+        transition:
+            font-size 0.82s var(--especialistas-ease),
+            max-width 0.82s var(--especialistas-ease),
+            text-shadow 0.58s ease;
+    }
+
+    .section-especialistas .especialistas-copy p {
+        transition:
+            max-width 0.82s var(--especialistas-ease),
+            opacity 0.58s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialistas-visual {
+        transform: translateX(var(--especialistas-media-shift));
+        transition: transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialistas-visual img {
+        transition:
+            filter 0.72s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialista-hotspot {
+        display: none;
+    }
+
+    .especialistas-seletor {
+        left: calc(50% - min(25vw, 470px));
+        bottom: clamp(92px, 14.2vh, 136px);
+        transform: translateX(calc(-50% + var(--especialistas-media-shift)));
+        overflow: visible;
+        transition:
+            transform 0.72s var(--especialistas-ease),
+            background-color 0.48s ease,
+            opacity 0.48s ease;
+    }
+
+    .section-especialistas.is-neutral .especialistas-seletor {
+        transform: translateX(calc(-50% + var(--especialistas-media-shift)));
+        opacity: 0.9;
+    }
+
+    .section-especialistas.is-francisco .especialistas-seletor,
+    .section-especialistas.is-thiago .especialistas-seletor {
+        transform: translate(calc(-50% + var(--especialistas-media-shift)), -8px);
+        opacity: 1;
+    }
+
+    .especialista-trigger {
+        position: relative;
+        transition:
+            color 0.42s ease,
+            background-color 0.42s ease,
+            border-color 0.42s ease;
+    }
+
+    .especialista-trigger::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: min(64vh, 620px);
+        background: transparent;
+        pointer-events: auto;
+    }
+
+    .especialista-trigger:first-child::before {
+        right: -5px;
+    }
+
+    .especialista-trigger:last-child::before {
+        left: -5px;
+    }
+
+    .especialistas-info {
+        right: clamp(10px, 2.8vw, 54px);
+        top: 53%;
+        width: min(520px, 32vw);
+        min-height: clamp(500px, 60vh, 620px);
+        transform: translateY(-50%);
+    }
+
+    .section-especialistas .especialistas-info {
+        transition:
+            opacity 0.54s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .section-especialistas.is-neutral .especialistas-info {
+        transform: translate3d(34px, -50%, 0) scale(0.985);
+    }
+
+    .section-especialistas.is-francisco .especialistas-info,
+    .section-especialistas.is-thiago .especialistas-info {
+        transform: translate3d(0, -50%, 0) scale(1);
+    }
+
+    .section-especialistas .especialista-card {
+        padding: clamp(32px, 2.4vw, 42px) clamp(32px, 2.5vw, 44px);
+        overflow: hidden;
+        transition:
+            opacity 0.38s ease,
+            transform 0.74s var(--especialistas-ease),
+            clip-path 0.76s var(--especialistas-ease),
+            border-color 0.5s ease;
+    }
+
+    .especialista-card h3 {
+        font-size: clamp(2.15rem, 2.75vw, 3.25rem);
+    }
+
+    .especialista-texto {
+        margin-top: 28px;
+        line-height: 1.78;
+    }
+
+    .especialista-eixos {
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+    .especialista-eixos span {
+        padding-top: 12px;
+        line-height: 1.5;
+    }
+
+    .especialista-eixos span:last-child {
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .section-especialistas.is-thiago .especialista-card-thiago::after,
+    .section-especialistas.is-francisco .especialista-card-francisco::after {
+        animation-duration: 1.25s;
+        animation-delay: 0.12s;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1180px) {
+    .especialistas-info {
+        right: clamp(10px, 2vw, 28px);
+        width: min(470px, 35vw);
+        min-height: clamp(480px, 59vh, 590px);
+    }
+
+    .section-especialistas .especialista-card {
+        padding: 30px 28px;
+    }
+}
+
+@media (min-width: 769px) {
+    .especialistas-visual img {
+        transition:
+            filter 0.72s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialista-trigger {
+        transition:
+            color 0.42s ease,
+            background-color 0.42s ease,
+            border-color 0.42s ease;
+    }
+}
+
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-media-shift-neutral: clamp(-81px, -3.9vw, -52px);
+        --especialistas-media-shift-active: clamp(60px, 5.46vw, 112px);
+        --especialistas-media-shift: var(--especialistas-media-shift-neutral);
+    }
+
+    .section-especialistas.is-francisco,
+    .section-especialistas.is-thiago {
+        --especialistas-media-shift: var(--especialistas-media-shift-active);
+    }
+
+    .especialistas-visual {
+        transform: translateX(var(--especialistas-media-shift));
+    }
+
+    .section-especialistas.is-neutral .especialistas-visual img,
+    .section-especialistas.is-francisco .especialistas-visual img,
+    .section-especialistas.is-thiago .especialistas-visual img {
+        transform: translate3d(0, 4.6vh, 0) scale(1);
+    }
+
+    .section-especialistas.is-neutral .especialistas-seletor,
+    .section-especialistas.is-francisco .especialistas-seletor,
+    .section-especialistas.is-thiago .especialistas-seletor {
+        transform: translateX(calc(-50% + var(--especialistas-media-shift)));
+    }
+}
+
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-headline-ease: cubic-bezier(0.37, 0, 0.13, 1);
+        --especialistas-ease: cubic-bezier(0.26, 0.72, 0.22, 1);
+    }
+
+    .section-especialistas .especialistas-copy {
+        will-change: left, top, width, transform, opacity;
+        backface-visibility: hidden;
+        transition:
+            left 1.05s var(--especialistas-headline-ease),
+            top 1.05s var(--especialistas-headline-ease),
+            width 1.05s var(--especialistas-headline-ease),
+            transform 1.05s var(--especialistas-headline-ease),
+            opacity 0.72s ease;
+    }
+
+    .section-especialistas .especialistas-copy h2 {
+        will-change: font-size, max-width;
+        transition:
+            font-size 1.05s var(--especialistas-headline-ease),
+            max-width 1.05s var(--especialistas-headline-ease),
+            text-shadow 0.72s ease;
+    }
+
+    .section-especialistas .especialistas-copy p {
+        transition:
+            max-width 1.05s var(--especialistas-headline-ease),
+            opacity 0.72s ease,
+            transform 1.05s var(--especialistas-headline-ease);
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy h2 {
+        max-width: 11.4ch;
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 10.2ch;
+    }
+
+    .especialistas-info {
+        right: clamp(72px, 8vw, 154px);
+    }
+
+    .section-especialistas.is-neutral .especialistas-info {
+        transform: translate3d(24px, -50%, 0) scale(0.985);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1180px) {
+    .especialistas-info {
+        right: clamp(42px, 5vw, 82px);
+    }
+}
+
+@media (min-width: 769px) {
+    .especialistas-visual img {
+        transition:
+            filter 0.72s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialista-trigger {
+        transition:
+            color 0.42s ease,
+            background-color 0.42s ease,
+            border-color 0.42s ease;
     }
 }
 
@@ -1636,8 +2172,7 @@ body.menu-scroll-lock {
         line-height: 0.95;
     }
 
-    #servicos .services-intro h2,
-    .contato-copy h2 {
+    #servicos .services-intro h2 {
         font-size: clamp(2.45rem, 10.5vw, 3rem);
         line-height: 0.98;
     }
@@ -2266,7 +2801,7 @@ body.menu-scroll-lock {
         height: 100%;
         max-width: none;
         object-fit: cover;
-        object-position: center;
+        object-position: 44% center;
     }
 }
 /* Mobile flow optimization: preserva elementos, reduz repaints e melhora resposta ao toque */
@@ -2504,7 +3039,7 @@ body.menu-scroll-lock {
     }
 
     #servicos .services-shell,
-    .gestao-bpx-temp,
+    .gestao-bpx-content,
     .container-metodo,
     .contato-shell {
         padding-top: max(var(--mobile-header-safe), 114px);
@@ -2515,7 +3050,7 @@ body.menu-scroll-lock {
     }
 
     .section-especialistas {
-        align-items: flex-start;
+        align-items: center;
     }
 
     .conteudo-hero {
@@ -2541,7 +3076,7 @@ body.menu-scroll-lock {
     }
 
     #servicos .services-shell,
-    .gestao-bpx-temp,
+    .gestao-bpx-content,
     .container-metodo,
     .section-placeholder,
     .contato-shell {
@@ -2569,8 +3104,14 @@ body.menu-scroll-lock {
     padding-top: max(140px, var(--headline-safe-top));
 }
 
-.gestao-bpx-temp {
+.gestao-bpx-content {
     padding-top: var(--headline-safe-top);
+}
+
+@media (min-width: 769px) {
+    #gestao-bpx .gestao-bpx-content {
+        padding-top: max(156px, calc(var(--headline-safe-top) + 18px));
+    }
 }
 
 .container-metodo {
@@ -2598,7 +3139,7 @@ body.menu-scroll-lock {
     }
 
     #servicos .services-shell,
-    .gestao-bpx-temp,
+    .gestao-bpx-content,
     .container-metodo,
     .section-placeholder,
     .contato-shell {
@@ -3137,5 +3678,2663 @@ body.menu-scroll-lock {
     .contato-mapa-mobile {
         content-visibility: auto;
         contain-intrinsic-size: 1000px;
+    }
+}
+
+/* BPx mobile: ordem compacta e imagem sem corte no fim da seção */
+@media (max-width: 768px) {
+    #gestao-bpx.section-full.section-gestao-bpx,
+    .wrapper-horizontal > #gestao-bpx.section-full.section-gestao-bpx.active {
+        height: auto;
+        min-height: 0;
+        padding-top: 0;
+        padding-bottom: 42px;
+    }
+
+    #gestao-bpx .gestao-bpx-content {
+        padding-top: clamp(28px, 5vh, 42px);
+    }
+
+    #gestao-bpx .gestao-bpx-visual {
+        margin-bottom: 0;
+    }
+}
+
+/* Ritmo mobile: respiro compacto abaixo do menu fixo */
+@media (max-width: 768px) {
+    :root {
+        --mobile-menu-to-headline-gap: 42px;
+        --mobile-section-head-start: calc(var(--fixed-header-height) + var(--mobile-menu-to-headline-gap));
+        --mobile-section-end-gap: 60px;
+        --mobile-services-end-padding: 42px;
+    }
+
+    .wrapper-horizontal > section:not(.section-hero) {
+        height: auto;
+        min-height: 0;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+
+    #servicos .services-shell,
+    #gestao-bpx .gestao-bpx-content,
+    .section-metodo .container-metodo,
+    .section-placeholder .placeholder-conteudo,
+    .contato-shell {
+        padding-top: var(--mobile-section-head-start);
+    }
+
+    #gestao-bpx .gestao-bpx-content {
+        padding-top: calc(var(--mobile-section-head-start) + 18px);
+    }
+
+    .section-metodo .container-metodo,
+    .section-placeholder .placeholder-conteudo,
+    .contato-shell {
+        padding-bottom: var(--mobile-section-end-gap);
+    }
+
+    #servicos .services-shell {
+        padding-bottom: var(--mobile-services-end-padding);
+    }
+
+    .section-placeholder {
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: center;
+    }
+
+    #gestao-bpx.section-full.section-gestao-bpx,
+    .wrapper-horizontal > #gestao-bpx.section-full.section-gestao-bpx.active {
+        padding-bottom: var(--mobile-section-end-gap);
+    }
+}
+
+
+/* ==========================================================================
+   CORREÇÃO FINAL — LINHA VERDE ACESA DOS SERVIÇOS ATIVOS
+   ========================================================================== */
+@media (min-width: 769px) {
+    #servicos.services-editorial .services-list .service-item {
+        position: relative;
+        overflow: visible;
+        border-top-color: rgba(255, 255, 255, 0.20);
+        transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.45s ease;
+    }
+
+    #servicos.services-editorial .services-list .service-item:last-child {
+        border-bottom-color: rgba(255, 255, 255, 0.20);
+    }
+
+    #servicos.services-editorial .services-list .service-item.active + .service-item {
+        border-top-color: rgba(45, 106, 79, 0.64);
+    }
+
+    #servicos.services-editorial .services-list .service-item.active:last-child {
+        border-bottom-color: rgba(45, 106, 79, 0.64);
+    }
+
+    #servicos.services-editorial .services-list .service-item::after {
+        content: '' !important;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        z-index: 5;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0 !important;
+        border-radius: 0;
+        background:
+            linear-gradient(90deg,
+                rgba(45, 106, 79, 0) 0%,
+                rgba(45, 106, 79, 0.30) 16%,
+                rgba(45, 106, 79, 0.82) 48%,
+                rgba(45, 106, 79, 0.32) 84%,
+                rgba(45, 106, 79, 0) 100%);
+        opacity: 0;
+        transform: scaleX(0.78);
+        transform-origin: center;
+        pointer-events: none;
+        box-shadow: none;
+        transition:
+            opacity 0.34s ease,
+            transform 0.42s ease,
+            box-shadow 0.42s ease;
+    }
+
+    #servicos.services-editorial .services-list .service-item.active::after {
+        opacity: 1;
+        transform: scaleX(1);
+        box-shadow:
+            0 0 6px rgba(45, 106, 79, 0.38),
+            0 0 14px rgba(45, 106, 79, 0.22),
+            0 0 24px rgba(45, 106, 79, 0.12);
+    }
+}
+
+
+/* ==========================================================================
+   TESTE EDITORIAL — ESPECIALISTAS DL
+   ========================================================================== */
+.section-especialistas {
+    position: relative;
+    min-height: 100vh;
+    display: block;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 0;
+    background:
+        radial-gradient(circle at 50% 46%, rgba(86, 124, 164, 0.68) 0%, rgba(42, 58, 86, 0.44) 28%, rgba(26, 26, 46, 0.94) 72%),
+        linear-gradient(135deg, #2a3a56 0%, #1a1a2e 72%);
+    color: #ffffff;
+}
+
+.section-especialistas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(26, 26, 46, 0.74) 0%, rgba(26, 26, 46, 0.22) 42%, rgba(26, 26, 46, 0.46) 100%),
+        radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.06) 0%, transparent 40%);
+}
+
+.section-especialistas::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    height: 34%;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, rgba(26, 26, 46, 0.46) 100%);
+}
+
+.especialistas-copy {
+    position: relative;
+    z-index: 5;
+    width: min(560px, calc(100% - 48px));
+    margin-left: clamp(24px, 7vw, 108px);
+    padding-top: clamp(132px, 19vh, 176px);
+}
+
+.especialistas-copy h2 {
+    margin: 0;
+    max-width: 10ch;
+    color: #ffffff;
+    font-size: clamp(3rem, 5.2vw, 5.8rem);
+    line-height: 0.92;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+    text-shadow: 0 12px 42px rgba(0, 0, 0, 0.34);
+}
+
+.especialistas-copy p {
+    margin: 26px 0 0;
+    max-width: 500px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(16px, 1.15vw, 18px);
+    line-height: 1.68;
+    text-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+}
+
+.especialistas-visual {
+    position: absolute;
+    inset: 90px 0 0;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.especialistas-visual img {
+    display: block;
+    width: auto;
+    height: min(82vh, 760px);
+    max-width: min(48vw, 720px);
+    object-fit: contain;
+    object-position: center bottom;
+    filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.28));
+    transform: translate3d(0, 4.6vh, 0);
+    transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.section-especialistas.is-francisco .especialistas-visual img,
+.section-especialistas.is-thiago .especialistas-visual img {
+    filter:
+        drop-shadow(0 26px 42px rgba(0, 0, 0, 0.28))
+        drop-shadow(0 0 20px rgba(125, 224, 176, 0.08));
+}
+
+.especialista-hotspot {
+    position: absolute;
+    top: 8%;
+    bottom: 4%;
+    width: min(9vw, 150px);
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.especialista-hotspot-francisco {
+    left: calc(50% - min(11vw, 190px));
+}
+
+.especialista-hotspot-thiago {
+    left: calc(50% - min(1vw, 10px));
+}
+
+.especialistas-info {
+    position: absolute;
+    right: clamp(24px, 7vw, 108px);
+    top: 42%;
+    z-index: 6;
+    width: min(450px, 27vw);
+    min-height: 430px;
+    transform: translateY(-38%);
+}
+
+.especialista-card {
+    position: absolute;
+    inset: 0;
+    padding: 30px 30px 28px;
+    border-left: 1px solid rgba(125, 224, 176, 0.46);
+    border-right: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: none;
+    border-bottom: none;
+    background: rgba(7, 20, 40, 0.78);
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(22px, 0, 0);
+    transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+}
+
+.section-especialistas.is-thiago .especialista-card-thiago,
+.section-especialistas.is-francisco .especialista-card-francisco {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+}
+
+.especialista-card::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: -110px;
+    width: 92px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(125, 224, 176, 0), rgba(125, 224, 176, 0.68));
+    box-shadow: 0 0 12px rgba(125, 224, 176, 0.20);
+}
+
+.especialista-label {
+    margin: 0 0 14px;
+    color: rgba(125, 224, 176, 0.92);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+}
+
+.especialista-card h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(2rem, 2.6vw, 3.1rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+    font-weight: 800;
+}
+
+.especialista-cargo {
+    margin: 12px 0 0;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.94rem;
+    line-height: 1.45;
+}
+
+.especialista-texto {
+    margin: 24px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.98rem;
+    line-height: 1.72;
+}
+
+.especialista-formacao {
+    position: relative;
+    margin: 18px 0 0;
+    padding-left: 14px;
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 0.88rem;
+    line-height: 1.58;
+}
+
+.especialista-formacao::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.48em;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: rgba(125, 224, 176, 0.72);
+    box-shadow: 0 0 10px rgba(125, 224, 176, 0.18);
+}
+
+.especialista-eixos {
+    display: grid;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.especialista-eixos span {
+    display: block;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+.especialistas-seletor {
+    position: absolute;
+    left: clamp(24px, 7vw, 108px);
+    bottom: clamp(32px, 6vh, 72px);
+    z-index: 7;
+    display: inline-flex;
+    gap: 10px;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(7, 20, 40, 0.46);
+    backdrop-filter: blur(6px);
+}
+
+.especialista-trigger {
+    min-width: 108px;
+    min-height: 38px;
+    padding: 0 16px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.62);
+    font-family: inherit;
+    font-size: 0.86rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.especialista-trigger.is-active,
+.especialista-trigger:hover,
+.especialista-trigger:focus-visible {
+    color: #ffffff;
+    border-color: rgba(125, 224, 176, 0.34);
+    background: rgba(45, 106, 79, 0.28);
+    outline: none;
+}
+
+@media (max-width: 1180px) {
+    .especialistas-info {
+        right: clamp(20px, 4vw, 54px);
+        width: min(420px, 32vw);
+    }
+
+    .especialista-card {
+        padding: 26px 24px;
+    }
+
+    .especialistas-visual img {
+        max-width: min(50vw, 660px);
+    }
+}
+
+@media (max-width: 768px) {
+    .section-especialistas {
+        min-height: 100svh;
+        padding: 118px 0 48px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .especialistas-copy {
+        width: min(100% - 42px, 520px);
+        margin: 0 auto;
+        padding-top: 0;
+        order: 1;
+    }
+
+    .especialistas-copy h2 {
+        max-width: 100%;
+        font-size: clamp(2.45rem, 10.5vw, 3rem);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+    }
+
+    .especialistas-copy p {
+        font-size: 16px;
+        line-height: 1.58;
+    }
+
+    .especialistas-visual {
+        position: relative;
+        inset: auto;
+        order: 2;
+        width: 100%;
+        margin: 34px 0 0;
+        pointer-events: none;
+    }
+
+    .especialistas-visual img {
+        width: min(88vw, 420px);
+        height: auto;
+        max-width: none;
+        margin: 0 auto;
+        transform: none;
+    }
+
+    .especialista-hotspot {
+        display: none;
+    }
+
+    .especialistas-seletor {
+        position: relative;
+        left: auto;
+        bottom: auto;
+        order: 3;
+        align-self: center;
+        margin-top: 24px;
+    }
+
+    .especialistas-info {
+        position: relative;
+        right: auto;
+        top: auto;
+        order: 4;
+        width: min(100% - 36px, 520px);
+        min-height: auto;
+        margin: 28px auto 0;
+        transform: none;
+    }
+
+    .especialista-card {
+        position: relative;
+        inset: auto;
+        display: none;
+        padding: 24px 22px;
+        transform: none;
+    }
+
+    .section-especialistas.is-francisco .especialista-card-francisco,
+    .section-especialistas.is-thiago .especialista-card-thiago {
+        display: block;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+
+    .especialista-card::before {
+        display: none;
+    }
+
+    .especialista-card h3 {
+        font-size: clamp(2rem, 10vw, 2.7rem);
+    }
+}
+
+
+/* ==========================================================================
+   TESTE INTERAÇÃO TECNOLÓGICA — ESPECIALISTAS DL
+   ========================================================================== */
+@media (min-width: 769px) {
+    .section-especialistas .especialistas-copy {
+        transition: left 0.52s cubic-bezier(0.22, 0.84, 0.22, 1), top 0.52s cubic-bezier(0.22, 0.84, 0.22, 1), width 0.52s cubic-bezier(0.22, 0.84, 0.22, 1), transform 0.52s cubic-bezier(0.22, 0.84, 0.22, 1), opacity 0.35s ease;
+    }
+
+    .section-especialistas .especialistas-copy h2 {
+        transition: font-size 0.52s cubic-bezier(0.22, 0.84, 0.22, 1), max-width 0.52s cubic-bezier(0.22, 0.84, 0.22, 1), text-shadow 0.35s ease;
+    }
+
+    .section-especialistas .especialistas-copy p {
+        transition: max-width 0.52s cubic-bezier(0.22, 0.84, 0.22, 1), opacity 0.35s ease, transform 0.52s cubic-bezier(0.22, 0.84, 0.22, 1);
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy {
+        position: absolute;
+        left: 50%;
+        top: 49%;
+        width: min(760px, 46vw);
+        margin-left: 0;
+        padding-top: 0;
+        transform: translate3d(-24%, -42%, 0);
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy h2 {
+        max-width: 12ch;
+        font-size: clamp(3.6rem, 5.8vw, 6.4rem);
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy p {
+        max-width: 620px;
+        opacity: 0.82;
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy,
+    .section-especialistas.is-thiago .especialistas-copy {
+        position: absolute;
+        left: clamp(24px, 7vw, 108px);
+        top: 49%;
+        width: min(430px, 30vw);
+        margin-left: 0;
+        padding-top: 0;
+        transform: translate3d(0, -38%, 0);
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 9ch;
+        font-size: clamp(2.35rem, 3.25vw, 4.05rem);
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy p,
+    .section-especialistas.is-thiago .especialistas-copy p {
+        max-width: 360px;
+        opacity: 0.68;
+        transform: translate3d(0, -2px, 0);
+    }
+
+    .section-especialistas.is-neutral .especialistas-info {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate3d(26px, -38%, 0) scale(0.98);
+    }
+
+    .section-especialistas .especialistas-info {
+        transition: opacity 0.28s ease, transform 0.52s cubic-bezier(0.22, 0.84, 0.22, 1);
+    }
+
+    .section-especialistas.is-francisco .especialistas-info,
+    .section-especialistas.is-thiago .especialistas-info {
+        opacity: 1;
+        transform: translate3d(0, -38%, 0) scale(1);
+    }
+
+    .section-especialistas .especialista-card {
+        overflow: hidden;
+        clip-path: inset(0 0 0 100%);
+        transform: translate3d(30px, 0, 0);
+        transition: opacity 0.18s ease, transform 0.42s cubic-bezier(0.22, 0.84, 0.22, 1), clip-path 0.46s cubic-bezier(0.18, 0.84, 0.22, 1), border-color 0.35s ease;
+    }
+
+    .section-especialistas .especialista-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -34%;
+        width: 28%;
+        background: linear-gradient(90deg, transparent, rgba(125, 224, 176, 0.16), transparent);
+        opacity: 0;
+        transform: skewX(-12deg);
+        pointer-events: none;
+    }
+
+    .section-especialistas.is-thiago .especialista-card-thiago,
+    .section-especialistas.is-francisco .especialista-card-francisco {
+        clip-path: inset(0 0 0 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .section-especialistas.is-thiago .especialista-card-thiago::after,
+    .section-especialistas.is-francisco .especialista-card-francisco::after {
+        animation: especialistaScan 0.9s ease 0.08s both;
+    }
+
+    @keyframes especialistaScan {
+        0% { left: -34%; opacity: 0; }
+        20% { opacity: 1; }
+        100% { left: 106%; opacity: 0; }
+    }
+
+    .section-especialistas.is-neutral .especialistas-visual img {
+        transform: translate3d(0, 4.6vh, 0) scale(1);
+        filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.28));
+    }
+
+    .section-especialistas.is-francisco .especialistas-visual img {
+        transform: translate3d(1.2vw, 4.6vh, 0) scale(1.012);
+    }
+
+    .section-especialistas.is-thiago .especialistas-visual img {
+        transform: translate3d(-1.2vw, 4.6vh, 0) scale(1.012);
+    }
+
+    .especialistas-seletor {
+        transition: transform 0.38s cubic-bezier(0.22, 0.84, 0.22, 1), background-color 0.32s ease, opacity 0.32s ease;
+    }
+
+    .section-especialistas.is-neutral .especialistas-seletor {
+        transform: translate3d(0, 0, 0);
+        opacity: 0.90;
+    }
+
+    .section-especialistas.is-francisco .especialistas-seletor,
+    .section-especialistas.is-thiago .especialistas-seletor {
+        transform: translate3d(0, -8px, 0);
+        opacity: 1;
+    }
+
+    .especialista-trigger {
+        position: relative;
+    }
+
+    .section-especialistas.is-neutral .especialista-trigger::after {
+        content: "";
+        position: absolute;
+        inset: auto 14px 6px;
+        height: 1px;
+        background: rgba(125, 224, 176, 0.32);
+        opacity: 0;
+        transform: scaleX(0.4);
+        animation: especialistaIdlePulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes especialistaIdlePulse {
+        0%, 100% { opacity: 0; transform: scaleX(0.4); }
+        48% { opacity: 1; transform: scaleX(1); }
+    }
+}
+
+/* ==========================================================================
+   REFINO FINAL — ESPECIALISTAS DL
+   ========================================================================== */
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-media-shift: clamp(-116px, -5.6vw, -74px);
+        --especialistas-ease: cubic-bezier(0.2, 0.74, 0.22, 1);
+    }
+
+    .section-especialistas .especialistas-copy {
+        transition:
+            left 0.82s var(--especialistas-ease),
+            top 0.82s var(--especialistas-ease),
+            width 0.82s var(--especialistas-ease),
+            transform 0.82s var(--especialistas-ease),
+            opacity 0.58s ease;
+    }
+
+    .section-especialistas .especialistas-copy h2 {
+        transition:
+            font-size 0.82s var(--especialistas-ease),
+            max-width 0.82s var(--especialistas-ease),
+            text-shadow 0.58s ease;
+    }
+
+    .section-especialistas .especialistas-copy p {
+        transition:
+            max-width 0.82s var(--especialistas-ease),
+            opacity 0.58s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialistas-visual {
+        transform: translateX(var(--especialistas-media-shift));
+        transition: transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialista-hotspot {
+        display: none;
+    }
+
+    .especialistas-seletor {
+        left: calc(50% - min(25vw, 470px));
+        bottom: clamp(92px, 14.2vh, 136px);
+        overflow: visible;
+        transition:
+            transform 0.72s var(--especialistas-ease),
+            background-color 0.48s ease,
+            opacity 0.48s ease;
+    }
+
+    .section-especialistas.is-neutral .especialistas-seletor {
+        transform: translateX(calc(-50% + var(--especialistas-media-shift)));
+        opacity: 0.9;
+    }
+
+    .section-especialistas.is-francisco .especialistas-seletor,
+    .section-especialistas.is-thiago .especialistas-seletor {
+        transform: translate(calc(-50% + var(--especialistas-media-shift)), -8px);
+        opacity: 1;
+    }
+
+    .especialista-trigger {
+        position: relative;
+    }
+
+    .especialista-trigger::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: min(64vh, 620px);
+        background: transparent;
+        pointer-events: auto;
+    }
+
+    .especialista-trigger:first-child::before {
+        right: -5px;
+    }
+
+    .especialista-trigger:last-child::before {
+        left: -5px;
+    }
+
+    .especialistas-info {
+        right: clamp(13px, 3.64vw, 70px);
+        top: 53%;
+        width: min(520px, 32vw);
+        min-height: clamp(500px, 60vh, 620px);
+        transform: translateY(-50%);
+    }
+
+    .section-especialistas .especialistas-info {
+        transition:
+            opacity 0.54s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .section-especialistas.is-neutral .especialistas-info {
+        transform: translate3d(34px, -50%, 0) scale(0.985);
+    }
+
+    .section-especialistas.is-francisco .especialistas-info,
+    .section-especialistas.is-thiago .especialistas-info {
+        transform: translate3d(0, -50%, 0) scale(1);
+    }
+
+    .section-especialistas .especialista-card {
+        padding: clamp(32px, 2.4vw, 42px) clamp(32px, 2.5vw, 44px);
+        overflow: hidden;
+        transition:
+            opacity 0.38s ease,
+            transform 0.74s var(--especialistas-ease),
+            clip-path 0.76s var(--especialistas-ease),
+            border-color 0.5s ease;
+    }
+
+    .especialista-card h3 {
+        font-size: clamp(2.15rem, 2.75vw, 3.25rem);
+    }
+
+    .especialista-texto {
+        margin-top: 28px;
+        line-height: 1.78;
+    }
+
+    .especialista-eixos {
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+    .especialista-eixos span {
+        padding-top: 12px;
+        line-height: 1.5;
+    }
+
+    .especialista-eixos span:last-child {
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .section-especialistas.is-thiago .especialista-card-thiago::after,
+    .section-especialistas.is-francisco .especialista-card-francisco::after {
+        animation-duration: 1.25s;
+        animation-delay: 0.12s;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1180px) {
+    .especialistas-info {
+        right: clamp(13px, 2.6vw, 36px);
+        width: min(470px, 35vw);
+        min-height: clamp(480px, 59vh, 590px);
+    }
+
+    .section-especialistas .especialista-card {
+        padding: 30px 28px;
+    }
+}
+
+@media (min-width: 769px) {
+    .especialistas-visual img {
+        transition:
+            filter 0.72s ease,
+            transform 0.82s var(--especialistas-ease);
+    }
+
+    .especialista-trigger {
+        transition:
+            color 0.42s ease,
+            background-color 0.42s ease,
+            border-color 0.42s ease;
+    }
+}
+
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-media-shift-neutral: clamp(-81px, -3.9vw, -52px);
+        --especialistas-media-shift-active: clamp(60px, 5.46vw, 112px);
+        --especialistas-media-shift: var(--especialistas-media-shift-neutral);
+    }
+
+    .section-especialistas.is-francisco,
+    .section-especialistas.is-thiago {
+        --especialistas-media-shift: var(--especialistas-media-shift-active);
+    }
+
+    .especialistas-visual {
+        transform: translateX(var(--especialistas-media-shift));
+    }
+
+    .section-especialistas.is-neutral .especialistas-visual img,
+    .section-especialistas.is-francisco .especialistas-visual img,
+    .section-especialistas.is-thiago .especialistas-visual img {
+        transform: translate3d(0, 4.6vh, 0) scale(1);
+    }
+
+    .section-especialistas.is-neutral .especialistas-seletor,
+    .section-especialistas.is-francisco .especialistas-seletor,
+    .section-especialistas.is-thiago .especialistas-seletor {
+        transform: translateX(calc(-50% + var(--especialistas-media-shift)));
+    }
+}
+
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-headline-ease: cubic-bezier(0.37, 0, 0.13, 1);
+        --especialistas-ease: cubic-bezier(0.26, 0.72, 0.22, 1);
+    }
+
+    .section-especialistas .especialistas-copy {
+        will-change: left, top, width, transform, opacity;
+        backface-visibility: hidden;
+        transition:
+            left 1.05s var(--especialistas-headline-ease),
+            top 1.05s var(--especialistas-headline-ease),
+            width 1.05s var(--especialistas-headline-ease),
+            transform 1.05s var(--especialistas-headline-ease),
+            opacity 0.72s ease;
+    }
+
+    .section-especialistas .especialistas-copy h2 {
+        will-change: font-size, max-width;
+        transition:
+            font-size 1.05s var(--especialistas-headline-ease),
+            max-width 1.05s var(--especialistas-headline-ease),
+            text-shadow 0.72s ease;
+    }
+
+    .section-especialistas .especialistas-copy p {
+        transition:
+            max-width 1.05s var(--especialistas-headline-ease),
+            opacity 0.72s ease,
+            transform 1.05s var(--especialistas-headline-ease);
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy h2 {
+        max-width: 11.4ch;
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 10.2ch;
+    }
+
+    .especialistas-info {
+        right: clamp(72px, 8vw, 154px);
+    }
+
+    .section-especialistas.is-neutral .especialistas-info {
+        transform: translate3d(24px, -50%, 0) scale(0.985);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1180px) {
+    .especialistas-info {
+        right: clamp(42px, 5vw, 82px);
+    }
+}
+
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-headline-ease: cubic-bezier(0.34, 0, 0.14, 1);
+    }
+
+    .section-especialistas .especialistas-copy,
+    .section-especialistas.is-neutral .especialistas-copy,
+    .section-especialistas.is-francisco .especialistas-copy,
+    .section-especialistas.is-thiago .especialistas-copy {
+        width: min(760px, 46vw);
+    }
+
+    .section-especialistas .especialistas-copy {
+        transition:
+            left 1.12s var(--especialistas-headline-ease),
+            top 1.12s var(--especialistas-headline-ease),
+            transform 1.12s var(--especialistas-headline-ease),
+            opacity 0.72s ease;
+    }
+
+    .section-especialistas .especialistas-copy h2,
+    .section-especialistas.is-neutral .especialistas-copy h2,
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 11.2ch;
+        font-size: clamp(3.4rem, 5.2vw, 6rem);
+        transform-origin: left top;
+        text-wrap: balance;
+        transition:
+            transform 1.12s var(--especialistas-headline-ease),
+            text-shadow 0.72s ease;
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy h2 {
+        transform: scale(1);
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        transform: scale(0.68);
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy p,
+    .section-especialistas.is-thiago .especialistas-copy p {
+        transform: translate3d(0, clamp(-52px, -3.4vw, -30px), 0);
+    }
+
+    .especialistas-info {
+        right: clamp(104px, 10.5vw, 220px);
+    }
+
+    .section-especialistas.is-neutral .especialistas-info {
+        transform: translate3d(18px, -50%, 0) scale(0.985);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1180px) {
+    .especialistas-info {
+        right: clamp(62px, 7vw, 108px);
+    }
+}
+
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-anchor-left: clamp(24px, 7vw, 108px);
+        --especialistas-headline-ease: cubic-bezier(0.32, 0, 0.12, 1);
+        --especialistas-media-shift-active: clamp(134px, 10.5vw, 210px);
+    }
+
+    .section-especialistas .especialistas-copy,
+    .section-especialistas.is-neutral .especialistas-copy,
+    .section-especialistas.is-francisco .especialistas-copy,
+    .section-especialistas.is-thiago .especialistas-copy {
+        position: absolute;
+        left: var(--especialistas-anchor-left);
+        top: 49%;
+        width: min(760px, 46vw);
+        margin-left: 0;
+        padding-top: 0;
+        will-change: transform, opacity;
+        transition:
+            transform 1.16s var(--especialistas-headline-ease),
+            opacity 0.72s ease;
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy {
+        transform: translate3d(calc(50vw - var(--especialistas-anchor-left) - 24%), -42%, 0);
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy,
+    .section-especialistas.is-thiago .especialistas-copy {
+        transform: translate3d(0, -38%, 0);
+    }
+
+    .section-especialistas .especialistas-copy h2,
+    .section-especialistas.is-neutral .especialistas-copy h2,
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 11.2ch;
+        font-size: clamp(3.4rem, 5.2vw, 6rem);
+        text-wrap: wrap;
+        transform-origin: left top;
+        will-change: transform;
+        transition:
+            transform 1.16s var(--especialistas-headline-ease),
+            text-shadow 0.72s ease;
+    }
+
+    .section-especialistas.is-neutral .especialistas-copy h2 {
+        transform: translateZ(0) scale(1);
+    }
+
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        transform: translateZ(0) scale(0.68);
+    }
+
+    .section-especialistas .especialistas-copy p {
+        transition:
+            opacity 0.72s ease,
+            transform 1.16s var(--especialistas-headline-ease);
+    }
+}
+
+@media (min-width: 769px) {
+    .wrapper-horizontal > #especialistas.section-full.section-especialistas.active {
+        left: 0 !important;
+        right: auto !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        transform: translate3d(0, 0, 0) !important;
+    }
+
+    .especialista-trigger {
+        min-width: 132px;
+        min-height: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.08;
+        text-align: center;
+        white-space: normal;
+    }
+}
+
+.especialista-trigger {
+    line-height: 1.08;
+    text-align: center;
+    white-space: normal;
+}
+
+@media (min-width: 769px) {
+    .especialista-hotspot-thiago {
+        left: calc(50% - min(11vw, 190px));
+    }
+
+    .especialista-hotspot-francisco {
+        left: calc(50% - min(1vw, 10px));
+    }
+}
+
+@media (max-width: 768px) {
+    .especialista-trigger {
+        min-height: 52px;
+        padding: 6px 14px;
+    }
+}
+
+@media (min-width: 769px) {
+    .section-especialistas {
+        --especialistas-media-shift-active: clamp(248px, 17.6vw, 376px);
+    }
+}
+
+@media (max-width: 768px) {
+    .section-especialistas {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        padding: 118px 0 54px;
+        overflow: visible;
+    }
+
+    .section-especialistas .especialistas-copy,
+    .section-especialistas.is-neutral .especialistas-copy,
+    .section-especialistas.is-francisco .especialistas-copy,
+    .section-especialistas.is-thiago .especialistas-copy {
+        position: relative;
+        left: auto;
+        top: auto;
+        order: 1;
+        width: min(100% - 42px, 520px);
+        margin: 0 auto;
+        padding-top: 0;
+        transform: none;
+        z-index: 5;
+    }
+
+    .section-especialistas .especialistas-copy h2,
+    .section-especialistas.is-neutral .especialistas-copy h2,
+    .section-especialistas.is-francisco .especialistas-copy h2,
+    .section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 100%;
+        font-size: clamp(2.45rem, 10.5vw, 3rem);
+        line-height: 0.98;
+        transform: none;
+    }
+
+    .section-especialistas .especialistas-copy p,
+    .section-especialistas.is-neutral .especialistas-copy p,
+    .section-especialistas.is-francisco .especialistas-copy p,
+    .section-especialistas.is-thiago .especialistas-copy p {
+        max-width: 100%;
+        opacity: 0.82;
+        transform: none;
+    }
+
+    .section-especialistas .especialistas-visual {
+        position: relative;
+        inset: auto;
+        order: 2;
+        width: 100%;
+        margin: 32px 0 0;
+        transform: none;
+        z-index: 3;
+    }
+
+    .section-especialistas .especialistas-visual img,
+    .section-especialistas.is-neutral .especialistas-visual img,
+    .section-especialistas.is-francisco .especialistas-visual img,
+    .section-especialistas.is-thiago .especialistas-visual img {
+        width: min(88vw, 420px);
+        height: auto;
+        max-width: none;
+        margin: 0 auto;
+        transform: none;
+    }
+
+    .section-especialistas .especialistas-seletor {
+        order: 3;
+    }
+
+    .section-especialistas .especialistas-info {
+        order: 4;
+    }
+}
+
+.especialista-texto + h3 {
+    margin-top: 0.72em;
+}
+
+@media (min-width: 769px) {
+    .especialistas-info {
+        min-height: clamp(545px, 64vh, 680px);
+    }
+}
+
+@media (max-width: 768px) {
+    #especialistas.section-full.section-especialistas,
+    .wrapper-horizontal > #especialistas.section-full.section-especialistas.active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 118px 0 54px !important;
+        overflow: visible !important;
+    }
+
+    #especialistas .especialistas-copy,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy {
+        position: static !important;
+        order: 1 !important;
+        width: min(100% - 42px, 520px) !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-copy h2,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy h2,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy h2,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 100% !important;
+        font-size: clamp(2.45rem, 10.5vw, 3rem) !important;
+        line-height: 0.98 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-copy p,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy p,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy p,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy p {
+        max-width: 100% !important;
+        opacity: 0.82 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-visual,
+    #especialistas.section-especialistas.is-neutral .especialistas-visual,
+    #especialistas.section-especialistas.is-francisco .especialistas-visual,
+    #especialistas.section-especialistas.is-thiago .especialistas-visual {
+        position: static !important;
+        order: 2 !important;
+        width: 100% !important;
+        margin: 36px 0 0 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-visual img,
+    #especialistas.section-especialistas.is-neutral .especialistas-visual img,
+    #especialistas.section-especialistas.is-francisco .especialistas-visual img,
+    #especialistas.section-especialistas.is-thiago .especialistas-visual img {
+        width: min(88vw, 420px) !important;
+        height: auto !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-seletor {
+        order: 3 !important;
+    }
+
+    #especialistas .especialistas-info {
+        order: 4 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #especialistas.section-full.section-especialistas,
+    .wrapper-horizontal > #especialistas.section-full.section-especialistas.active {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 118px 0 54px !important;
+        overflow: visible !important;
+    }
+
+    #especialistas .especialistas-copy,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy {
+        position: static !important;
+        left: auto !important;
+        top: auto !important;
+        order: 1 !important;
+        width: min(100% - 42px, 520px) !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-copy h2,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy h2,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy h2,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 100% !important;
+        font-size: clamp(2.45rem, 10.5vw, 3rem) !important;
+        line-height: 0.98 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-copy p,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy p,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy p,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy p {
+        max-width: 100% !important;
+        opacity: 0.82 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-visual,
+    #especialistas.section-especialistas.is-neutral .especialistas-visual,
+    #especialistas.section-especialistas.is-francisco .especialistas-visual,
+    #especialistas.section-especialistas.is-thiago .especialistas-visual {
+        position: static !important;
+        inset: auto !important;
+        order: 2 !important;
+        width: 100% !important;
+        margin: 36px 0 0 !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-visual img,
+    #especialistas.section-especialistas.is-neutral .especialistas-visual img,
+    #especialistas.section-especialistas.is-francisco .especialistas-visual img,
+    #especialistas.section-especialistas.is-thiago .especialistas-visual img {
+        width: min(88vw, 420px) !important;
+        height: auto !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+
+    #especialistas .especialistas-seletor {
+        order: 3 !important;
+    }
+
+    #especialistas .especialistas-info {
+        order: 4 !important;
+    }
+}
+
+#especialistas.section-especialistas.is-compact-stack,
+.wrapper-horizontal > #especialistas.section-especialistas.is-compact-stack.active {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 118px 0 54px !important;
+    overflow: visible !important;
+}
+
+#especialistas.is-compact-stack .especialistas-copy,
+#especialistas.is-compact-stack.is-neutral .especialistas-copy,
+#especialistas.is-compact-stack.is-francisco .especialistas-copy,
+#especialistas.is-compact-stack.is-thiago .especialistas-copy {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    order: 1 !important;
+    width: min(100% - 42px, 520px) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    transform: none !important;
+}
+
+#especialistas.is-compact-stack .especialistas-copy h2,
+#especialistas.is-compact-stack.is-neutral .especialistas-copy h2,
+#especialistas.is-compact-stack.is-francisco .especialistas-copy h2,
+#especialistas.is-compact-stack.is-thiago .especialistas-copy h2 {
+    max-width: 100% !important;
+    font-size: clamp(2.45rem, 10.5vw, 3rem) !important;
+    line-height: 0.98 !important;
+    transform: none !important;
+}
+
+#especialistas.is-compact-stack .especialistas-copy p,
+#especialistas.is-compact-stack.is-neutral .especialistas-copy p,
+#especialistas.is-compact-stack.is-francisco .especialistas-copy p,
+#especialistas.is-compact-stack.is-thiago .especialistas-copy p {
+    max-width: 100% !important;
+    opacity: 0.82 !important;
+    transform: none !important;
+}
+
+#especialistas.is-compact-stack .especialistas-visual,
+#especialistas.is-compact-stack.is-neutral .especialistas-visual,
+#especialistas.is-compact-stack.is-francisco .especialistas-visual,
+#especialistas.is-compact-stack.is-thiago .especialistas-visual {
+    position: static !important;
+    inset: auto !important;
+    order: 2 !important;
+    width: 100% !important;
+    margin: 36px 0 0 !important;
+    transform: none !important;
+}
+
+#especialistas.is-compact-stack .especialistas-visual img,
+#especialistas.is-compact-stack.is-neutral .especialistas-visual img,
+#especialistas.is-compact-stack.is-francisco .especialistas-visual img,
+#especialistas.is-compact-stack.is-thiago .especialistas-visual img {
+    width: min(88vw, 420px) !important;
+    height: auto !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    transform: none !important;
+}
+
+#especialistas.is-compact-stack .especialistas-seletor {
+    order: 3 !important;
+}
+
+#especialistas.is-compact-stack .especialistas-info {
+    order: 4 !important;
+}
+
+@media (max-width: 768px) {
+    body #especialistas.section-full.section-especialistas,
+    body .wrapper-horizontal > #especialistas.section-full.section-especialistas,
+    body .wrapper-horizontal > #especialistas.section-full.section-especialistas.active {
+        position: relative !important;
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+        grid-auto-rows: auto !important;
+        align-items: start !important;
+        justify-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: calc(108px + env(safe-area-inset-top)) 0 54px !important;
+        overflow: visible !important;
+    }
+
+    body #especialistas .especialistas-copy,
+    body #especialistas.section-especialistas.is-neutral .especialistas-copy,
+    body #especialistas.section-especialistas.is-francisco .especialistas-copy,
+    body #especialistas.section-especialistas.is-thiago .especialistas-copy {
+        position: relative !important;
+        inset: auto !important;
+        grid-row: 1 !important;
+        order: initial !important;
+        z-index: 4 !important;
+        width: min(100% - 42px, 520px) !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+
+    body #especialistas .especialistas-copy h2,
+    body #especialistas.section-especialistas.is-neutral .especialistas-copy h2,
+    body #especialistas.section-especialistas.is-francisco .especialistas-copy h2,
+    body #especialistas.section-especialistas.is-thiago .especialistas-copy h2 {
+        max-width: 100% !important;
+        font-size: clamp(2.45rem, 10.5vw, 3rem) !important;
+        line-height: 0.98 !important;
+        transform: none !important;
+    }
+
+    body #especialistas .especialistas-copy p,
+    body #especialistas.section-especialistas.is-neutral .especialistas-copy p,
+    body #especialistas.section-especialistas.is-francisco .especialistas-copy p,
+    body #especialistas.section-especialistas.is-thiago .especialistas-copy p {
+        max-width: 100% !important;
+        margin-top: 24px !important;
+        opacity: 0.82 !important;
+        transform: none !important;
+    }
+
+    body #especialistas .especialistas-visual,
+    body #especialistas.section-especialistas.is-neutral .especialistas-visual,
+    body #especialistas.section-especialistas.is-francisco .especialistas-visual,
+    body #especialistas.section-especialistas.is-thiago .especialistas-visual {
+        position: relative !important;
+        inset: auto !important;
+        grid-row: 2 !important;
+        order: initial !important;
+        z-index: 3 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 34px 0 0 !important;
+        display: grid !important;
+        justify-items: center !important;
+        align-items: end !important;
+        pointer-events: none !important;
+        transform: none !important;
+    }
+
+    body #especialistas .especialistas-visual img,
+    body #especialistas.section-especialistas.is-neutral .especialistas-visual img,
+    body #especialistas.section-especialistas.is-francisco .especialistas-visual img,
+    body #especialistas.section-especialistas.is-thiago .especialistas-visual img {
+        display: block !important;
+        width: min(88vw, 420px) !important;
+        height: auto !important;
+        max-width: none !important;
+        max-height: none !important;
+        margin: 0 auto !important;
+        object-fit: contain !important;
+        transform: none !important;
+    }
+
+    body #especialistas .especialista-hotspot {
+        display: none !important;
+    }
+
+    body #especialistas .especialistas-seletor,
+    body #especialistas.section-especialistas.is-neutral .especialistas-seletor,
+    body #especialistas.section-especialistas.is-francisco .especialistas-seletor,
+    body #especialistas.section-especialistas.is-thiago .especialistas-seletor {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        grid-row: 3 !important;
+        order: initial !important;
+        z-index: 5 !important;
+        margin: 24px auto 0 !important;
+        transform: none !important;
+    }
+
+    body #especialistas .especialistas-info,
+    body #especialistas.section-especialistas.is-neutral .especialistas-info,
+    body #especialistas.section-especialistas.is-francisco .especialistas-info,
+    body #especialistas.section-especialistas.is-thiago .especialistas-info {
+        position: relative !important;
+        inset: auto !important;
+        grid-row: 4 !important;
+        order: initial !important;
+        width: min(100% - 36px, 520px) !important;
+        min-height: auto !important;
+        margin: 28px auto 0 !important;
+        transform: none !important;
+    }
+
+    body #especialistas .especialista-card {
+        position: relative !important;
+        inset: auto !important;
+        display: none !important;
+        transform: none !important;
+    }
+
+    body #especialistas.section-especialistas.is-francisco .especialista-card-francisco,
+    body #especialistas.section-especialistas.is-thiago .especialista-card-thiago {
+        display: block !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+}
+
+@media (min-width: 769px) {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    body #especialistas.section-full.section-especialistas,
+    body .wrapper-horizontal > #especialistas.section-full.section-especialistas,
+    body .wrapper-horizontal > #especialistas.section-full.section-especialistas.active {
+        left: 0 !important;
+        right: auto !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+    #especialistas.section-especialistas {
+        --especialistas-safe-top: calc(var(--fixed-header-height, 90px) + 22px);
+    }
+
+    #especialistas.section-especialistas .especialistas-visual {
+        top: var(--especialistas-safe-top);
+        bottom: 0;
+        height: calc(100vh - var(--especialistas-safe-top));
+    }
+
+    #especialistas.section-especialistas .especialistas-visual img,
+    #especialistas.section-especialistas.is-neutral .especialistas-visual img,
+    #especialistas.section-especialistas.is-francisco .especialistas-visual img,
+    #especialistas.section-especialistas.is-thiago .especialistas-visual img {
+        height: min(calc(100vh - var(--especialistas-safe-top) - 18px), 690px);
+        transform: translate3d(0, 3vh, 0) scale(1);
+    }
+
+    #especialistas.section-especialistas .especialistas-info,
+    #especialistas.section-especialistas.is-neutral .especialistas-info,
+    #especialistas.section-especialistas.is-francisco .especialistas-info,
+    #especialistas.section-especialistas.is-thiago .especialistas-info {
+        top: max(calc(var(--especialistas-safe-top) + 22px), 24%);
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) and (max-height: 780px) {
+    #especialistas.section-especialistas {
+        --especialistas-safe-top: calc(var(--fixed-header-height, 90px) + 18px);
+    }
+
+    #especialistas.section-especialistas .especialistas-copy,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy {
+        top: 50%;
+    }
+
+    #especialistas.section-especialistas .especialistas-copy h2,
+    #especialistas.section-especialistas.is-neutral .especialistas-copy h2,
+    #especialistas.section-especialistas.is-francisco .especialistas-copy h2,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy h2 {
+        font-size: clamp(2.75rem, 5.1vw, 4.9rem);
+    }
+
+    #especialistas.section-especialistas.is-francisco .especialistas-copy h2,
+    #especialistas.section-especialistas.is-thiago .especialistas-copy h2 {
+        transform: translateZ(0) scale(0.7);
+    }
+
+    #especialistas.section-especialistas .especialistas-copy p {
+        font-size: clamp(0.95rem, 1.25vw, 1.05rem);
+    }
+
+    #especialistas.section-especialistas .especialistas-info,
+    #especialistas.section-especialistas.is-francisco .especialistas-info,
+    #especialistas.section-especialistas.is-thiago .especialistas-info {
+        top: calc(var(--especialistas-safe-top) + 14px);
+        width: min(435px, 32vw);
+        min-height: min(500px, calc(100vh - var(--especialistas-safe-top) - 42px));
+    }
+
+    #especialistas.section-especialistas .especialista-card {
+        padding: 26px 28px 24px;
+    }
+
+    #especialistas.section-especialistas .especialista-card h3 {
+        font-size: clamp(2rem, 3.2vw, 2.75rem);
+    }
+
+    #especialistas.section-especialistas .especialista-formacao,
+    #especialistas.section-especialistas .especialista-eixos span {
+        font-size: 0.84rem;
+        line-height: 1.45;
+    }
+
+    #especialistas.section-especialistas .especialistas-visual img,
+    #especialistas.section-especialistas.is-neutral .especialistas-visual img,
+    #especialistas.section-especialistas.is-francisco .especialistas-visual img,
+    #especialistas.section-especialistas.is-thiago .especialistas-visual img {
+        height: min(calc(100vh - var(--especialistas-safe-top) - 34px), 590px);
+        transform: translate3d(0, -8px, 0) scale(1);
+    }
+
+    #especialistas.section-especialistas .especialistas-seletor,
+    #especialistas.section-especialistas.is-neutral .especialistas-seletor,
+    #especialistas.section-especialistas.is-francisco .especialistas-seletor,
+    #especialistas.section-especialistas.is-thiago .especialistas-seletor {
+        bottom: clamp(22px, 4vh, 38px);
+    }
+}
+
+@media (min-width: 769px) {
+    #especialistas.section-especialistas .especialista-card {
+        border-top: 0 !important;
+        border-right: 0 !important;
+        border-bottom: 0 !important;
+        border-left: 1px solid rgba(125, 224, 176, 0.46) !important;
+        background:
+            radial-gradient(ellipse at 0% 50%,
+                rgba(7, 20, 40, 0.90) 0%,
+                rgba(7, 20, 40, 0.76) 30%,
+                rgba(7, 20, 40, 0.40) 54%,
+                rgba(7, 20, 40, 0.12) 74%,
+                rgba(7, 20, 40, 0) 100%) !important;
+        background-clip: padding-box !important;
+        box-shadow: none !important;
+    }
+
+    #especialistas.section-especialistas .especialista-card::after {
+        display: none !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+    body .wrapper-horizontal > section.section-full.active:not(.section-hero),
+    body .wrapper-horizontal > #especialistas.section-full.section-especialistas.active {
+        width: calc(100vw + 4vw) !important;
+        max-width: none !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    body .wrapper-horizontal > #servicos.services-editorial.active {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    #servicos.services-editorial .services-bg-layer,
+    #servicos.services-editorial .services-overlay,
+    #servicos.services-editorial .service-bg {
+        width: 100% !important;
+        height: 100% !important;
+        transform: none !important;
+    }
+
+    #servicos.services-editorial .service-bg {
+        transition: opacity 0.55s ease, filter 0.55s ease !important;
+    }
+
+    #servicos.services-editorial .service-bg.active {
+        transform: none !important;
+    }
+
+    #servicos.services-editorial .services-shell {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        padding-top: max(var(--headline-safe-top), 118px) !important;
+        padding-bottom: 38px !important;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto minmax(0, 1fr) !important;
+        align-items: start !important;
+        align-content: start !important;
+        gap: clamp(24px, 4vh, 34px) !important;
+        overflow: hidden !important;
+    }
+
+    #servicos.services-editorial .services-intro {
+        align-self: start !important;
+    }
+
+    #servicos.services-editorial .services-cta {
+        margin-top: clamp(28px, 4.4vh, 40px) !important;
+    }
+
+    #servicos.services-editorial .services-list {
+        align-self: start !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    #servicos.services-editorial .service-item {
+        padding-top: clamp(12px, 1.75vh, 16px) !important;
+        padding-bottom: clamp(12px, 1.85vh, 18px) !important;
+    }
+
+    #servicos.services-editorial .service-item.active p {
+        max-height: 112px !important;
+        margin-top: 10px !important;
+    }
+}
+
+@media (min-width: 1101px) and (max-width: 1440px) and (max-height: 820px) {
+    body .wrapper-horizontal > #servicos.services-editorial.active {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    #servicos.services-editorial .services-bg-layer,
+    #servicos.services-editorial .services-overlay,
+    #servicos.services-editorial .service-bg {
+        width: 100% !important;
+        height: 100% !important;
+        transform: none !important;
+    }
+
+    #servicos.services-editorial .service-bg {
+        transition: opacity 0.55s ease, filter 0.55s ease !important;
+    }
+
+    #servicos.services-editorial .service-bg.active {
+        transform: none !important;
+    }
+
+    #servicos.services-editorial .services-shell {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        padding-top: max(var(--headline-safe-top), 118px) !important;
+        padding-bottom: 36px !important;
+        align-items: start !important;
+        overflow: hidden !important;
+    }
+
+    #servicos.services-editorial .services-intro,
+    #servicos.services-editorial .services-list {
+        align-self: start !important;
+    }
+
+    #servicos.services-editorial .services-cta {
+        margin-top: clamp(30px, 5.4vh, 42px) !important;
+    }
+
+    #servicos.services-editorial .service-item {
+        padding-top: clamp(12px, 1.7vh, 16px) !important;
+        padding-bottom: clamp(12px, 1.8vh, 18px) !important;
+    }
+
+    #servicos.services-editorial .service-item.active p {
+        max-height: 112px !important;
+        margin-top: 10px !important;
+    }
+}
+
+@media (min-width: 769px) {
+    #contato.section-contato .contato-copy h2 {
+        font-size: clamp(2.85rem, 4.85vw, 5.35rem) !important;
+        line-height: 0.94 !important;
+    }
+
+    #contato.section-contato .contato-ctas {
+        margin-top: clamp(24px, 3.6vh, 38px) !important;
+        gap: 16px !important;
+    }
+
+    #contato.section-contato .contato-btn,
+    #contato.section-contato .contato-submit {
+        min-height: 40px !important;
+        padding: 10px 20px !important;
+        font-size: 0.86rem !important;
+        line-height: 1.04 !important;
+    }
+
+    #contato.section-contato .contato-cta-separador {
+        min-height: 40px !important;
+    }
+
+    #contato.section-contato .contato-linha-final {
+        margin: clamp(28px, 4.4vh, 46px) 0 18px !important;
+    }
+
+    #contato.section-contato .contato-rodape {
+        gap: 12px !important;
+    }
+}
+
+@media (min-width: 769px) and (max-height: 820px) {
+    #contato.section-contato .contato-shell {
+        padding-top: max(132px, var(--headline-safe-top)) !important;
+        padding-bottom: 38px !important;
+    }
+
+    #contato.section-contato .contato-copy h2 {
+        font-size: clamp(2.65rem, 4.45vw, 4.9rem) !important;
+    }
+
+    #contato.section-contato .contato-ctas {
+        margin-top: clamp(20px, 3vh, 30px) !important;
+        gap: 14px !important;
+    }
+
+    #contato.section-contato .contato-btn,
+    #contato.section-contato .contato-submit {
+        min-height: 38px !important;
+        padding: 9px 18px !important;
+        font-size: 0.82rem !important;
+    }
+
+    #contato.section-contato .contato-linha-final {
+        margin: clamp(22px, 3.4vh, 34px) 0 14px !important;
+    }
+}
+
+#metodo.section-metodo .item-metodo {
+    opacity: 0.46 !important;
+    outline: none;
+    transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.45s ease !important;
+}
+
+#metodo.section-metodo .item-metodo.passado {
+    opacity: 0.46 !important;
+}
+
+#metodo.section-metodo .item-metodo.ativo {
+    opacity: 1 !important;
+}
+
+#metodo.section-metodo .item-metodo.passado::after {
+    transform: scaleY(0) !important;
+}
+
+#metodo.section-metodo .item-metodo::after {
+    transition:
+        opacity 0.35s ease,
+        transform 0.42s ease,
+        box-shadow 0.42s ease !important;
+}
+
+#metodo.section-metodo .item-metodo.ativo::after {
+    content: "" !important;
+    position: absolute;
+    left: 55px !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: -12px !important;
+    height: 1px !important;
+    background:
+        linear-gradient(90deg,
+            rgba(45, 106, 79, 0) 0%,
+            rgba(45, 106, 79, 0.28) 18%,
+            rgba(45, 106, 79, 0.74) 48%,
+            rgba(45, 106, 79, 0.30) 82%,
+            rgba(45, 106, 79, 0) 100%) !important;
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+    transform-origin: center !important;
+    box-shadow:
+        0 0 6px rgba(45, 106, 79, 0.30),
+        0 0 16px rgba(45, 106, 79, 0.16) !important;
+}
+
+#metodo.section-metodo .metodo-texto p {
+    max-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    transform: translateY(-6px) !important;
+    transition:
+        max-height 0.35s ease,
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        margin-top 0.35s ease !important;
+}
+
+#metodo.section-metodo .metodo-texto h3 {
+    font-size: clamp(1.28rem, 1.58vw, 1.68rem) !important;
+    transform-origin: left center;
+    transition:
+        color 0.35s ease,
+        transform 0.35s ease,
+        font-size 0.35s ease !important;
+}
+
+#metodo.section-metodo .item-metodo.ativo .metodo-texto h3 {
+    font-size: clamp(1.52rem, 2vw, 2.08rem) !important;
+    transform: scale(1.025);
+}
+
+#metodo.section-metodo .item-metodo.ativo .metodo-texto p {
+    max-height: 160px !important;
+    margin-top: 8px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    font-size: 1.04rem !important;
+    line-height: 1.62 !important;
+}
+
+#metodo.section-metodo .item-metodo:not(.ativo) .metodo-texto p {
+    font-size: 1rem !important;
+}
+
+#metodo.section-metodo .item-metodo.ativo .metodo-numero {
+    background-color: var(--metodo-step-color) !important;
+    border-color: var(--metodo-step-color) !important;
+    color: #ffffff !important;
+}
+
+#metodo.section-metodo .item-metodo:not(.ativo) .metodo-numero {
+    background-color: rgba(26, 26, 46, 0.10) !important;
+    border-color: rgba(255, 255, 255, 0.46) !important;
+    color: rgba(255, 255, 255, 0.82) !important;
+}
+
+#servicos .services-cta,
+#metodo.section-metodo .metodo-cta {
+    margin-top: clamp(39px, 6.9vh, 57px) !important;
+    max-width: 440px !important;
+}
+
+#servicos .services-cta-separator,
+#metodo.section-metodo .metodo-cta-separator {
+    margin: 0 0 24px !important;
+}
+
+#servicos .services-cta-text,
+#metodo.section-metodo .metodo-cta-text {
+    margin: 0 0 18px !important;
+    font-weight: 600 !important;
+}
+
+#servicos .services-cta-button,
+#metodo.section-metodo .metodo-cta-button {
+    min-height: 40px !important;
+    padding: 10px 20px !important;
+    font-size: 0.86rem !important;
+    line-height: 1.04 !important;
+}
+
+@media (max-width: 1100px) {
+    #servicos .services-cta,
+    #metodo.section-metodo .metodo-cta {
+        margin-top: 34px !important;
+        max-width: 520px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #servicos .services-cta,
+    #servicos .services-cta-mobile,
+    #metodo.section-metodo .metodo-cta {
+        margin-top: 30px !important;
+    }
+
+    #servicos .services-cta-separator,
+    #metodo.section-metodo .metodo-cta-separator {
+        margin-bottom: 18px !important;
+    }
+
+    #servicos .services-cta-text,
+    #metodo.section-metodo .metodo-cta-text {
+        margin-bottom: 16px !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+    }
+
+#servicos .services-cta-button,
+    #servicos .services-cta-mobile .services-cta-button,
+    #metodo.section-metodo .metodo-cta-button {
+        min-height: 42px !important;
+        padding: 11px 22px !important;
+        font-size: 0.86rem !important;
+    }
+
+    #metodo.section-metodo .item-metodo.ativo .metodo-texto h3 {
+        font-size: 1.34rem !important;
+        transform: none;
+    }
+
+    #metodo.section-metodo .item-metodo.ativo .metodo-texto p {
+        font-size: 0.98rem !important;
+        line-height: 1.5 !important;
+    }
+
+    #metodo.section-metodo .metodo-texto h3 {
+        font-size: 1.18rem !important;
+    }
+}
+
+#especialistas.section-especialistas .especialista-formacao {
+    padding: 12px 16px 12px 0 !important;
+    background:
+        linear-gradient(270deg,
+            rgba(125, 224, 176, 0.10) 0%,
+            rgba(125, 224, 176, 0.055) 42%,
+            rgba(125, 224, 176, 0.018) 72%,
+            rgba(125, 224, 176, 0) 100%) !important;
+}
+
+#especialistas.section-especialistas .especialista-formacao::before {
+    display: none !important;
+}
+
+/* Mant�m o detalhamento completo acima do rodap� nos desktops mais baixos. */
+@media (min-width: 769px) and (max-width: 1440px) and (max-height: 780px) {
+    #especialistas.section-especialistas .especialistas-info,
+    #especialistas.section-especialistas.is-francisco .especialistas-info,
+    #especialistas.section-especialistas.is-thiago .especialistas-info {
+        height: calc(100vh - var(--especialistas-safe-top) - 34px);
+        min-height: 0;
+        max-height: none;
+    }
+
+    #especialistas.section-especialistas .especialista-card {
+        padding: 20px 26px 18px;
+    }
+
+    #especialistas.section-especialistas .especialista-card h3 {
+        font-size: clamp(1.85rem, 2.85vw, 2.45rem);
+    }
+
+    #especialistas.section-especialistas .especialista-cargo {
+        margin-top: 8px;
+        font-size: 0.84rem;
+        line-height: 1.35;
+    }
+
+    #especialistas.section-especialistas .especialista-formacao {
+        margin-top: 12px;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        font-size: 0.79rem;
+        line-height: 1.4;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos {
+        gap: 5px;
+        margin-top: 14px;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos span {
+        padding-top: 7px;
+        font-size: 0.79rem;
+        line-height: 1.38;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos span:last-child {
+        padding-bottom: 7px;
+    }
+}
+
+/* Forma��o acad�mica entre a apresenta��o e as especialidades. */
+#especialistas.section-especialistas .especialista-formacao-academica {
+    margin: 12px 0 0;
+    padding: 0 0 0 14px;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+@media (min-width: 769px) and (max-width: 1440px) and (max-height: 780px) {
+    #especialistas.section-especialistas .especialista-formacao-academica {
+        margin-top: 9px;
+        padding-left: 0;
+        font-size: 0.75rem;
+        line-height: 1.34;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos {
+        margin-top: 11px;
+    }
+}
+
+/* Destaque sutil para a forma��o, em contraponto � apresenta��o. */
+#especialistas.section-especialistas .especialista-formacao-academica {
+    padding: 10px 16px 10px 14px;
+    background: linear-gradient(90deg,
+        rgba(125, 224, 176, 0.115) 0%,
+        rgba(125, 224, 176, 0.065) 42%,
+        rgba(125, 224, 176, 0.022) 72%,
+        rgba(125, 224, 176, 0) 100%);
+}
+
+@media (min-width: 769px) and (max-width: 1440px) and (max-height: 780px) {
+    #especialistas.section-especialistas .especialista-formacao-academica {
+        padding: 7px 10px 7px 0;
+    }
+}
+
+/* A faixa da forma��o se antecipa ao texto, preservando o seu alinhamento. */
+#especialistas.section-especialistas .especialista-formacao-academica {
+    margin-left: -12px;
+    padding-left: 26px;
+}
+
+@media (min-width: 769px) and (max-width: 1440px) and (max-height: 780px) {
+    #especialistas.section-especialistas .especialista-formacao-academica {
+        margin-left: -10px;
+        padding-left: 14px;
+    }
+}
+
+/* Em desktops altos, o card acomoda a forma��o sem recortar o �ltimo eixo. */
+@media (min-width: 769px) and (min-height: 781px) {
+    #especialistas.section-especialistas .especialistas-info,
+    #especialistas.section-especialistas.is-francisco .especialistas-info,
+    #especialistas.section-especialistas.is-thiago .especialistas-info {
+        min-height: min(660px, calc(100vh - 130px));
+    }
+}
+
+/* Evita aproxima��o visual do card com o rodap� em desktops mais altos. */
+@media (min-width: 769px) and (min-height: 865px) {
+    #especialistas.section-especialistas .especialistas-info,
+    #especialistas.section-especialistas.is-francisco .especialistas-info,
+    #especialistas.section-especialistas.is-thiago .especialistas-info {
+        margin-top: -16px;
+    }
+}
+
+/* Desktop Moderno Escalado: largura ampla com altura �til compacta. */
+@media (min-width: 1441px) and (max-height: 780px) {
+    #especialistas.section-especialistas .especialista-card {
+        padding: 20px 28px 18px;
+    }
+
+    #especialistas.section-especialistas .especialista-card h3 {
+        font-size: clamp(2rem, 2.45vw, 2.7rem);
+    }
+
+    #especialistas.section-especialistas .especialista-cargo {
+        margin-top: 8px;
+        font-size: 0.84rem;
+        line-height: 1.35;
+    }
+
+    #especialistas.section-especialistas .especialista-formacao {
+        margin-top: 12px;
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+        font-size: 0.79rem;
+        line-height: 1.4;
+    }
+
+    #especialistas.section-especialistas .especialista-formacao-academica {
+        margin-top: 9px;
+        padding: 7px 10px 7px 14px;
+        font-size: 0.75rem;
+        line-height: 1.34;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos {
+        gap: 5px;
+        margin-top: 11px;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos span {
+        padding-top: 7px;
+        font-size: 0.79rem;
+        line-height: 1.38;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos span:last-child {
+        padding-bottom: 7px;
+    }
+}
+
+/* Equil�brio visual do Desktop Moderno Escalado. */
+@media (min-width: 1441px) and (max-height: 780px) {
+    #especialistas.section-especialistas .especialista-card {
+        padding: 26px 34px 22px;
+    }
+
+    #especialistas.section-especialistas .especialista-card h3 {
+        font-size: clamp(2.15rem, 2.75vw, 3.25rem);
+    }
+
+    #especialistas.section-especialistas .especialista-cargo {
+        margin-top: 12px;
+        font-size: 0.94rem;
+        line-height: 1.45;
+    }
+
+    #especialistas.section-especialistas .especialista-formacao {
+        margin-top: 18px;
+        padding: 12px 16px 12px 0 !important;
+        font-size: 0.88rem;
+        line-height: 1.58;
+    }
+
+    #especialistas.section-especialistas .especialista-formacao-academica {
+        margin-top: 12px;
+        padding: 10px 16px 10px 14px;
+        font-size: 0.84rem;
+        line-height: 1.45;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos {
+        gap: 9px;
+        margin-top: 23px;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos span {
+        padding-top: 9px;
+        font-size: 0.88rem;
+        line-height: 1.45;
+    }
+
+    #especialistas.section-especialistas .especialista-eixos span:last-child {
+        padding-bottom: 9px;
+    }
+}
+
+/* Gest�o BPx: marca em segundo plano e ritmo alinhado �s demais se��es. */
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-content > p:not(.gestao-bpx-eyebrow) {
+    font-size: clamp(0.95rem, 1.12vw, 1.05rem);
+    line-height: 1.6;
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta {
+    min-height: 40px;
+    margin-top: 28px;
+    padding: 10px 20px;
+    font-size: 0.86rem;
+    line-height: 1.04;
+}
+
+
+
+/* Ajuste de posi��o e presen�a da marca BPx. */
+
+/* Amplia��o da marca BPx sem alterar seu ponto de ancoragem. */
+
+/* Painel BPx est�tico no limite esquerdo do antigo parallax. */
+#gestao-bpx.section-gestao-bpx .gestao-bpx-visual,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-dashboard,
+.wrapper-horizontal > #gestao-bpx.section-gestao-bpx.active .gestao-bpx-visual {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Assinatura e CTA BPx compartilham a mesma linha no desktop. */
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature-copy {
+    white-space: nowrap;
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature .gestao-bpx-cta {
+    flex: 0 0 auto;
+    margin: 0;
+}
+
+/* A assinatura pode ultrapassar a coluna para acomodar o CTA em linha. */
+@media (min-width: 1121px) {
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-signature {
+        width: max-content;
+        max-width: none;
+    }
+}
+
+/* Assinatura em branco e CTA BPx com presen�a editorial. */
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature-copy {
+    color: #ffffff;
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature .gestao-bpx-cta {
+    min-height: auto;
+    padding: 6px 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.84rem;
+    font-weight: 700;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:hover,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:focus-visible {
+    background: transparent;
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+/* CTA BPx: ret�ngulo transl�cido, presente sem pesar. */
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature .gestao-bpx-cta {
+    min-height: 36px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.38);
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(255, 255, 255, 0.94);
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:hover,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:focus-visible {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(255, 255, 255, 0.68);
+    color: #ffffff;
+}
+
+/* Contorno mais discreto no CTA BPx. */
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature .gestao-bpx-cta {
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:hover,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:focus-visible {
+    border-color: rgba(255, 255, 255, 0.48);
+}
+
+/* CTA BPx com acabamento de vidro. */
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature .gestao-bpx-cta {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(255, 255, 255, 0.045) 58%,
+        rgba(255, 255, 255, 0.075) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24),
+                inset 0 -1px 0 rgba(7, 20, 40, 0.16),
+                0 8px 20px rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(10px) saturate(135%);
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:hover,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:focus-visible {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.08) 100%);
+    border-color: rgba(255, 255, 255, 0.46);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34),
+                0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+/* Vidro sem brilho de contorno. */
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-signature .gestao-bpx-cta {
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:hover,
+#gestao-bpx.section-gestao-bpx .gestao-bpx-cta:focus-visible {
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Padr�o global de CTA: vidro transl�cido e contorno suave. */
+#servicos .services-cta-button,
+#metodo.section-metodo .metodo-cta-button,
+#contato.section-contato .contato-btn,
+#contato.section-contato .contato-submit {
+    border-color: rgba(255, 255, 255, 0.14);
+    border-radius: 2px;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(255, 255, 255, 0.045) 58%,
+        rgba(255, 255, 255, 0.075) 100%);
+    color: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px) saturate(135%);
+}
+
+#servicos .services-cta-button:hover,
+#servicos .services-cta-button:focus,
+#servicos .services-cta-button:focus-visible,
+#metodo.section-metodo .metodo-cta-button:hover,
+#metodo.section-metodo .metodo-cta-button:focus,
+#metodo.section-metodo .metodo-cta-button:focus-visible,
+#contato.section-contato .contato-btn:hover,
+#contato.section-contato .contato-btn:focus,
+#contato.section-contato .contato-btn:focus-visible,
+#contato.section-contato .contato-submit:hover,
+#contato.section-contato .contato-submit:focus,
+#contato.section-contato .contato-submit:focus-visible {
+    border-color: rgba(255, 255, 255, 0.28);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.08) 100%);
+    color: #ffffff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+#contato.section-contato .contato-submit.is-success {
+    border-color: rgba(125, 224, 176, 0.70);
+    background: rgba(45, 106, 79, 0.34);
+}
+
+#contato.section-contato .contato-submit.is-error {
+    border-color: rgba(255, 116, 116, 0.78);
+    background: rgba(158, 38, 38, 0.30);
+}
+
+/* Estados funcionais do formul�rio prevalecem sobre o acabamento de vidro. */
+#contato.section-contato .contato-submit.is-success {
+    background: rgba(45, 106, 79, 0.34) !important;
+    border-color: rgba(125, 224, 176, 0.70) !important;
+}
+
+#contato.section-contato .contato-submit.is-error {
+    background: rgba(158, 38, 38, 0.30) !important;
+    border-color: rgba(255, 116, 116, 0.78) !important;
+}
+
+/* M�todo cabe integralmente nos desktops compactos: sem rolagem residual. */
+@media (min-width: 769px) and (max-height: 820px) {
+    .wrapper-horizontal > #metodo.section-metodo.active {
+        overflow-y: hidden;
+    }
+}
+
+/* M�todo acompanha o ritmo compacto do CTA em Servi�os. */
+#metodo.section-metodo .metodo-cta {
+    margin-top: clamp(28px, 4.4vh, 40px) !important;
+}
+
+#metodo.section-metodo .metodo-cta-separator {
+    margin-bottom: 18px !important;
+}
+
+#metodo.section-metodo .metodo-cta-text {
+    margin-bottom: 14px !important;
+}
+
+/* ==========================================================================
+   ORDEM E VISIBILIDADE DOS BLOCOS RESPONSIVOS
+   ========================================================================== */
+.metodo-cta-mobile,
+.gestao-bpx-mobile-cta {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    /* Método: headline, subheadline, etapas, texto de CTA e botão. */
+    #metodo.section-metodo .container-metodo {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    #metodo.section-metodo .metodo-conteudo {
+        display: block !important;
+        order: 1 !important;
+        width: 100% !important;
+    }
+
+    #metodo.section-metodo .metodo-conteudo > .metodo-cta {
+        display: none !important;
+    }
+
+    #metodo.section-metodo .lista-metodo {
+        order: 2 !important;
+        width: 100% !important;
+    }
+
+    #metodo.section-metodo .metodo-cta-mobile {
+        display: block !important;
+        order: 3 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 30px !important;
+    }
+
+    /* Gestão BPx: headline, subheadline, imagem, assinatura e botão. */
+    #gestao-bpx.section-gestao-bpx,
+    .wrapper-horizontal > #gestao-bpx.section-gestao-bpx.active {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: 100svh !important;
+        padding-bottom: var(--mobile-section-end-gap, 60px) !important;
+        overflow: hidden !important;
+    }
+
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-content {
+        order: 1 !important;
+    }
+
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-content > .gestao-bpx-signature {
+        display: none !important;
+    }
+
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-visual {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        order: 2 !important;
+        margin: 36px auto 0 !important;
+        transform: none !important;
+    }
+
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta {
+        position: relative;
+        z-index: 3;
+        display: flex !important;
+        flex-direction: column;
+        align-items: flex-start;
+        order: 3 !important;
+        gap: 14px;
+        width: min(calc(100% - 42px), 520px);
+        margin: 26px auto 0;
+    }
+
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta .gestao-bpx-signature {
+        display: block !important;
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta .gestao-bpx-cta {
+        display: inline-flex !important;
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta {
+        width: min(calc(100% - 32px), 440px);
+    }
+}
+
+/* CTA mobile: alinhamento e acabamento unificados. */
+@media (max-width: 768px) {
+    #servicos .services-cta-mobile,
+    #metodo.section-metodo .metodo-cta-mobile,
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta,
+    #contato.section-contato .contato-ctas {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    #servicos .services-cta-mobile .services-cta-separator,
+    #metodo.section-metodo .metodo-cta-mobile .metodo-cta-separator {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #servicos .services-cta-mobile .services-cta-text,
+    #metodo.section-metodo .metodo-cta-mobile .metodo-cta-text,
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta .gestao-bpx-signature {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    #servicos .services-cta-mobile .services-cta-button,
+    #metodo.section-metodo .metodo-cta-mobile .metodo-cta-button,
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta .gestao-bpx-cta,
+    #contato.section-contato .contato-btn,
+    #contato.section-contato .contato-submit {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        align-self: center !important;
+        width: min(100%, 340px) !important;
+        min-height: 42px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 11px 22px !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 2px !important;
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.14) 0%,
+            rgba(255, 255, 255, 0.045) 58%,
+            rgba(255, 255, 255, 0.075) 100%) !important;
+        color: rgba(255, 255, 255, 0.94) !important;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+        backdrop-filter: blur(10px) saturate(135%) !important;
+        text-align: center !important;
+    }
+
+    #servicos .services-cta-mobile .services-cta-button:hover,
+    #servicos .services-cta-mobile .services-cta-button:focus-visible,
+    #metodo.section-metodo .metodo-cta-mobile .metodo-cta-button:hover,
+    #metodo.section-metodo .metodo-cta-mobile .metodo-cta-button:focus-visible,
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta .gestao-bpx-cta:hover,
+    #gestao-bpx.section-gestao-bpx .gestao-bpx-mobile-cta .gestao-bpx-cta:focus-visible,
+    #contato.section-contato .contato-btn:hover,
+    #contato.section-contato .contato-btn:focus-visible,
+    #contato.section-contato .contato-submit:hover,
+    #contato.section-contato .contato-submit:focus-visible {
+        border-color: rgba(255, 255, 255, 0.28) !important;
+        background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.22) 0%,
+            rgba(255, 255, 255, 0.08) 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12) !important;
     }
 }
