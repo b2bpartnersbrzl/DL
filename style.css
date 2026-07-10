@@ -6418,3 +6418,20 @@ body.menu-scroll-lock {
             rgba(8, 13, 24, 0) 88%);
     }
 }
+/* Hero desktop: transicao real entre imagens, sem clarao entre os slides. */
+.section-hero {
+    background-color: #101727;
+}
+
+@keyframes heroCrossfade {
+    0% { opacity: 0; }
+    5%, 25% { opacity: 1; }
+    30%, 100% { opacity: 0; }
+}
+
+@media (min-width: 769px) {
+    .section-hero .slide {
+        animation-name: heroCrossfade !important;
+        will-change: opacity;
+    }
+}
