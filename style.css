@@ -6338,3 +6338,10 @@ body.menu-scroll-lock {
         box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12) !important;
     }
 }
+
+/* Animacoes fora da area visivel nao devem consumir pintura no mobile. */
+@media (max-width: 768px) {
+    #servicos.services-editorial.motion-paused {
+        animation-play-state: paused !important;
+    }
+}
