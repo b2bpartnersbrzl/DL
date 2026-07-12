@@ -6497,3 +6497,33 @@ body.menu-scroll-lock {
         background: linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, #1a1a2e 100%);
     }
 }
+@media (max-width: 768px) {
+    #servicos,
+    #gestao-bpx,
+    #metodo,
+    #especialistas,
+    #contato {
+        scroll-margin-top: 90px;
+    }
+
+    #servicos .services-shell {
+        padding-bottom: 72px !important;
+    }
+
+    #gestao-bpx.section-gestao-bpx,
+    .wrapper-horizontal > #gestao-bpx.section-gestao-bpx.active {
+        padding-bottom: 72px !important;
+    }
+
+    #metodo.section-metodo .container-metodo {
+        padding-bottom: 72px !important;
+    }
+
+    #especialistas.section-especialistas {
+        padding-bottom: 72px !important;
+    }
+
+    #contato.section-contato .contato-shell {
+        padding-bottom: 72px !important;
+    }
+}
