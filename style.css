@@ -6557,3 +6557,12 @@ body.menu-scroll-lock {
         font-weight: 800 !important;
     }
 }
+@media (max-width: 768px) {
+    .copyright-bar {
+        position: static;
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+}
