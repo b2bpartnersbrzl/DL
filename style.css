@@ -2740,6 +2740,7 @@ body.menu-scroll-lock {
         background-image: url('images/0004_mobile_opt.webp');
         animation-delay: 12s;
     }
+
 }
 
 @keyframes heroMobileOverlay {
@@ -3644,8 +3645,13 @@ body.menu-scroll-lock {
         contain: paint;
     }
 
+    .section-metodo .img-diag { background-image: url('images/0001_mobile_opt.webp') !important; }
+    .section-metodo .img-estrat { background-image: url('images/0002_mobile_opt.webp') !important; }
+    .section-metodo .img-estrut { background-image: url('images/0003_mobile_opt.webp') !important; }
+    .section-metodo .img-cond { background-image: url('images/0004_mobile_opt.webp') !important; }
+    .section-metodo .img-sust { background-image: url('images/0005_mobile_opt.webp') !important; }
+
     .section-metodo .img-metodo {
-        background-image: url('images/0001_new.webp') !important;
         filter: none !important;
         transform: none !important;
         transition: opacity 0.12s linear, visibility 0.12s linear !important;
