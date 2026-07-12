@@ -6473,7 +6473,7 @@ body.menu-scroll-lock {
         z-index: 2;
         pointer-events: none;
         background:
-            linear-gradient(180deg, #1a1a2e 0, rgba(26, 26, 46, 0) 80px, rgba(26, 26, 46, 0) calc(100% - 80px), #1a1a2e 100%),
+            linear-gradient(180deg, #1a1a2e 0 12px, rgba(26, 26, 46, 0) 80px, rgba(26, 26, 46, 0) calc(100% - 80px), #1a1a2e calc(100% - 12px) 100%),
             radial-gradient(circle at 50% 50%, transparent 0%, rgba(26, 26, 46, 0.18) 58%, rgba(26, 26, 46, 0.42) 100%);
     }
 
