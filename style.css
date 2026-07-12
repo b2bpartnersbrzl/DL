@@ -2161,6 +2161,7 @@ body.menu-scroll-lock {
 
     .menu-navegacao {
         height: 100svh;
+        height: 100dvh;
     }
 
     .header-principal,
@@ -2270,6 +2271,7 @@ body.menu-scroll-lock {
         width: min(310px, calc(100vw - 28px));
         height: auto;
         max-height: calc(100svh - 92px);
+        max-height: calc(100dvh - 92px);
         padding: 8px 0;
         overflow-y: auto;
         background-color: #ffffff;
