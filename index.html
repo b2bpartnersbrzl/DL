@@ -842,6 +842,25 @@
                     });
                 });
 
+                const listaMetodo = document.getElementById('lista-metodo');
+                if (listaMetodo) {
+                    let toqueInicioX = null;
+
+                    listaMetodo.addEventListener('touchstart', (event) => {
+                        toqueInicioX = event.changedTouches[0].clientX;
+                    }, { passive: true });
+
+                    listaMetodo.addEventListener('touchend', (event) => {
+                        if (toqueInicioX === null || !window.matchMedia('(max-width: 768px)').matches) return;
+                        const deltaX = event.changedTouches[0].clientX - toqueInicioX;
+                        toqueInicioX = null;
+                        if (Math.abs(deltaX) < 40) return;
+                        const proximoIndex = deltaX < 0
+                            ? Math.min(indexAtivo + 1, itens.length - 1)
+                            : Math.max(indexAtivo - 1, 0);
+                        if (proximoIndex !== indexAtivo) ativarPasso(proximoIndex);
+                    }, { passive: true });
+                }
                 ativarPasso(0);
             }
 

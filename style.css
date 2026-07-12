@@ -6543,3 +6543,18 @@ body.menu-scroll-lock {
         display: none;
     }
 }
+@media (max-width: 768px) {
+    #metodo.section-metodo .lista-metodo {
+        touch-action: pan-y;
+    }
+
+    #metodo.section-metodo .item-metodo.ativo .metodo-numero {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 4px rgba(125, 224, 176, 0.12);
+        font-weight: 800;
+    }
+
+    #metodo.section-metodo .item-metodo.ativo .metodo-texto h3 {
+        font-weight: 800 !important;
+    }
+}
