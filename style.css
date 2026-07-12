@@ -6456,3 +6456,31 @@ body.menu-scroll-lock {
         will-change: opacity;
     }
 }
+@media (max-width: 768px) {
+    #servicos.services-editorial,
+    #metodo.section-metodo,
+    #especialistas.section-especialistas,
+    #contato.section-contato {
+        background-color: #1a1a2e;
+    }
+
+    #servicos.services-editorial::after,
+    #metodo.section-metodo::after,
+    #especialistas.section-especialistas::after,
+    #contato.section-contato::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+        background:
+            linear-gradient(180deg, #1a1a2e 0, rgba(26, 26, 46, 0) 80px, rgba(26, 26, 46, 0) calc(100% - 80px), #1a1a2e 100%),
+            radial-gradient(circle at 50% 50%, transparent 0%, rgba(26, 26, 46, 0.18) 58%, rgba(26, 26, 46, 0.42) 100%);
+    }
+
+    #gestao-bpx.section-gestao-bpx {
+        background-color: #071428;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+}
