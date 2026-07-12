@@ -2146,7 +2146,7 @@ body.menu-scroll-lock {
 @media (max-width: 768px) {
     .copyright-bar {
         padding: 6px 16px;
-        font-size: 0.64rem;
+        font-size: 0.75rem;
         text-align: center;
     }
 }
