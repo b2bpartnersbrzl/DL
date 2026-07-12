@@ -845,20 +845,29 @@
                 const listaMetodo = document.getElementById('lista-metodo');
                 if (listaMetodo) {
                     let toqueInicioX = null;
+                    const obterToqueX = (event) => {
+                        const toque = event.changedTouches?.[0] || event.touches?.[0];
+                        return typeof toque?.clientX === 'number' ? toque.clientX : null;
+                    };
 
                     listaMetodo.addEventListener('touchstart', (event) => {
-                        toqueInicioX = event.changedTouches[0].clientX;
+                        toqueInicioX = obterToqueX(event);
                     }, { passive: true });
 
                     listaMetodo.addEventListener('touchend', (event) => {
-                        if (toqueInicioX === null || !window.matchMedia('(max-width: 768px)').matches) return;
-                        const deltaX = event.changedTouches[0].clientX - toqueInicioX;
+                        const toqueFimX = obterToqueX(event);
+                        if (toqueInicioX === null || toqueFimX === null || !window.matchMedia('(max-width: 768px)').matches) return;
+                        const deltaX = toqueFimX - toqueInicioX;
                         toqueInicioX = null;
                         if (Math.abs(deltaX) < 40) return;
                         const proximoIndex = deltaX < 0
                             ? Math.min(indexAtivo + 1, itens.length - 1)
                             : Math.max(indexAtivo - 1, 0);
                         if (proximoIndex !== indexAtivo) ativarPasso(proximoIndex);
+                    }, { passive: true });
+
+                    listaMetodo.addEventListener('touchcancel', () => {
+                        toqueInicioX = null;
                     }, { passive: true });
                 }
                 ativarPasso(0);
