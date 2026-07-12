@@ -6493,7 +6493,7 @@ body.menu-scroll-lock {
         height: 150px;
         z-index: 2;
         pointer-events: none;
-        background: linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, #1a1a2e 100%);
+        background: linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, rgba(26, 26, 46, 0) calc(100% - 12px), #1a1a2e calc(100% - 12px) 100%);
     }
 }
 @media (max-width: 768px) {
