@@ -6484,3 +6484,16 @@ body.menu-scroll-lock {
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 }
+@media (max-width: 768px) {
+    #inicio.section-hero::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 150px;
+        z-index: 2;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, #1a1a2e 100%);
+    }
+}
