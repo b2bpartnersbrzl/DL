@@ -6435,3 +6435,117 @@ body.menu-scroll-lock {
         will-change: opacity;
     }
 }
+@media (max-width: 768px) {
+    #servicos.services-editorial .services-list .service-item:last-child {
+        border-bottom: 0 !important;
+    }
+
+    #servicos .services-cta-separator,
+    #metodo.section-metodo .metodo-cta-separator {
+        display: none !important;
+    }
+
+    #metodo.section-metodo .item-metodo.ativo::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    #contato.section-contato .contato-linha-final {
+        visibility: hidden;
+    }
+}
+@media (max-width: 768px) {
+    #servicos.services-editorial .services-list {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        gap: 10px;
+    }
+
+    #servicos.services-editorial .services-list .service-item,
+    #servicos.services-editorial .services-list .service-item.active {
+        width: 100%;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+}
+@media (max-width: 768px) {
+    #servicos.services-editorial,
+    #servicos .services-overlay::before,
+    #servicos .service-bg,
+    #servicos .service-item,
+    #servicos .service-item h3,
+    #servicos .service-item p {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+@media (max-width: 768px) {
+    .section-hero .slide {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .section-hero .slide:not(.img-implantacao) {
+        opacity: 0 !important;
+    }
+
+    .section-hero .img-implantacao {
+        opacity: 1 !important;
+    }
+}
+@media (max-width: 768px) {
+    #metodo.section-metodo,
+    #metodo.section-metodo .metodo-bg-layer,
+    #metodo.section-metodo .metodo-overlay,
+    #metodo.section-metodo .item-metodo,
+    #metodo.section-metodo .metodo-numero,
+    #metodo.section-metodo .metodo-texto h3,
+    #metodo.section-metodo .metodo-texto p,
+    #metodo.section-metodo .metodo-cta-mobile {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    #metodo.section-metodo .item-metodo {
+        opacity: 1 !important;
+    }
+
+    #metodo.section-metodo .item-metodo .metodo-texto p,
+    #metodo.section-metodo .item-metodo.ativo .metodo-texto p {
+        max-height: none !important;
+        margin-top: 8px !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+@media (max-width: 768px) {
+    #metodo.section-metodo .item-metodo .metodo-numero {
+        background-color: var(--metodo-step-color) !important;
+        border-color: var(--metodo-step-color) !important;
+        color: #ffffff !important;
+    }
+}
+@media (max-width: 768px) {
+    #metodo.section-metodo .item-metodo .metodo-numero,
+    #metodo.section-metodo .item-metodo.ativo .metodo-numero {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    #metodo.section-metodo .item-metodo .metodo-texto h3,
+    #metodo.section-metodo .item-metodo.ativo .metodo-texto h3 {
+        font-size: 1.18rem !important;
+        transform: none !important;
+    }
+}
+@media (max-width: 768px) {
+    #metodo.section-metodo .item-metodo .metodo-numero,
+    #metodo.section-metodo .item-metodo.ativo .metodo-numero,
+    #metodo.section-metodo .item-metodo.passado .metodo-numero,
+    #metodo.section-metodo .item-metodo:not(.ativo) .metodo-numero {
+        background-color: var(--metodo-step-color) !important;
+        border-color: var(--metodo-step-color) !important;
+        color: #ffffff !important;
+    }
+}
