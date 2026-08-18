@@ -6481,20 +6481,6 @@ body.menu-scroll-lock {
     }
 }
 @media (max-width: 768px) {
-    .section-hero .slide {
-        animation: none !important;
-        transition: none !important;
-    }
-
-    .section-hero .slide:not(.img-implantacao) {
-        opacity: 0 !important;
-    }
-
-    .section-hero .img-implantacao {
-        opacity: 1 !important;
-    }
-}
-@media (max-width: 768px) {
     #metodo.section-metodo,
     #metodo.section-metodo .metodo-bg-layer,
     #metodo.section-metodo .metodo-overlay,
