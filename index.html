@@ -842,6 +842,7 @@
             const contatoForm = document.querySelector('.contato-form');
             const contatoSubmit = contatoForm ? contatoForm.querySelector('.contato-submit') : null;
             const contatoWhatsapp = contatoForm ? contatoForm.querySelector('input[name="whatsapp"]') : null;
+            const contatoWhatsappLink = document.querySelector('.contato-ctas a[href^="https://wa.me/"]');
 
             const limparEstadoBotaoContato = () => {
                 if (!contatoSubmit) return;
@@ -866,6 +867,14 @@
 
                     if (!aberto) {
                         limparEstadoBotaoContato();
+                    }
+                });
+            }
+
+            if (contatoWhatsappLink) {
+                contatoWhatsappLink.addEventListener('click', () => {
+                    if (typeof window.fbq === 'function') {
+                        window.fbq('track', 'Contact', { content_name: 'WhatsApp' });
                     }
                 });
             }
